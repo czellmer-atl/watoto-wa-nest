@@ -23,7 +23,6 @@ assets/js/main.js      Navigation, Spendenbetrag-Auswahl, Kopieren, Formulare
 assets/img/            Fotos (800px und 1600px), Logo, Touch-Icon
 assets/fonts/          Outfit + Inter (selbst gehostet, kein Google Fonts)
 assets/docs/           Satzung, Freistellungsbescheid
-.github/workflows/     Automatisches Deployment auf GitHub Pages
 ```
 
 ## Lokal ansehen
@@ -36,24 +35,25 @@ Dann <http://localhost:8080> öffnen.
 
 ## Veröffentlichen auf GitHub Pages
 
-1. Repository auf GitHub anlegen (z. B. `watotowanest/watotowanest.github.io` für die Adresse
-   `https://watotowanest.github.io`, oder ein beliebiger Name für `https://<user>.github.io/<repo>/`).
-2. Code hochladen:
-   ```bash
-   git remote add origin git@github.com:<user>/<repo>.git
-   git push -u origin main
-   ```
-3. Auf GitHub unter **Settings → Pages** als Source **GitHub Actions** wählen.
-   Der Workflow in `.github/workflows/deploy.yml` veröffentlicht die Seite bei jedem Push auf `main`.
-4. Eigene Domain (empfohlen, z. B. `watotowanest.de`): unter **Settings → Pages → Custom domain**
-   eintragen; GitHub legt dann die Datei `CNAME` an. Beim Domain-Anbieter einen `CNAME`-Eintrag
-   `www` → `<user>.github.io` sowie die A-Records für die Apex-Domain anlegen
-   (siehe [GitHub-Doku](https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-site)).
+Die Seite liegt im Repository `czellmer-atl/watoto-wa-nest` und wird direkt aus dem Branch `main`
+veröffentlicht (Settings → Pages → Source: „Deploy from a branch“, Branch `main`, Ordner `/`).
+Jeder Push auf `main` ist nach ein bis zwei Minuten live unter
+<https://czellmer-atl.github.io/watoto-wa-nest/>.
+
+```bash
+git push origin main
+```
+
+Eigene Domain (empfohlen, z. B. `watotowanest.de`): unter **Settings → Pages → Custom domain**
+eintragen; GitHub legt dann die Datei `CNAME` an. Beim Domain-Anbieter einen `CNAME`-Eintrag
+`www` → `czellmer-atl.github.io` sowie die A-Records für die Apex-Domain anlegen
+(siehe [GitHub-Doku](https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-site)).
+Danach die absolute URL (siehe unten) auf die neue Domain umstellen.
 
 ### Nach dem Deployment anpassen
 
 - **Absolute URL**: In `sitemap.xml`, `robots.txt` und den `<link rel="canonical">` / `og:url` / JSON-LD-Einträgen
-  im `<head>` jeder Seite steht aktuell `https://czellmer-atl.github.io/watoto-wa-nest/`. Mit Suchen & Ersetzen auf die echte Adresse ändern.
+  im `<head>` jeder Seite steht `https://czellmer-atl.github.io/watoto-wa-nest/`. Bei einer eigenen Domain mit Suchen & Ersetzen umstellen.
 - **Kontaktformular**: Standardmäßig öffnet das Formular das E-Mail-Programm des Besuchers (kein Backend nötig).
   Für ein „echtes“ Formular bei [Formspree](https://formspree.io) (kostenlos bis 50 Nachrichten/Monat) ein Formular anlegen
   und die URL in `assets/js/main.js` unter `CONFIG.CONTACT_ENDPOINT` eintragen. Dann in `datenschutz.html`
