@@ -21,7 +21,7 @@ Reines HTML, CSS und JavaScript – kein Build-Schritt, kein Framework. Gehostet
 assets/css/style.css   Design-System (Farben, Typografie, Komponenten, Dark Mode)
 assets/js/main.js      Navigation, Spendenbetrag-Auswahl, Kopieren, Formulare
 assets/img/            Fotos (800px und 1600px), Logo, Touch-Icon
-assets/fonts/          Fraunces + Inter (selbst gehostet, kein Google Fonts)
+assets/fonts/          Outfit + Inter (selbst gehostet, kein Google Fonts)
 assets/docs/           Satzung, Freistellungsbescheid
 .github/workflows/     Automatisches Deployment auf GitHub Pages
 ```
@@ -71,6 +71,6 @@ Dann <http://localhost:8080> öffnen.
 
 ## Design
 
-- Farben: Waldgrün `#1e5a3c`, Terrakotta `#c8542a` (Call-to-Action), Sonnengelb `#e8a33c`, Sand `#f8f4ec`.
-- Schriften: Fraunces (Überschriften) und Inter (Fließtext), selbst gehostet.
+- Farben aus dem Logo: Rot `#9c0a0a` (Call-to-Action), Gold `#e8b048`, Grün `#1f8f26`, Blau `#1368c8`, Himmelblau `#7ab8f5`, Braun `#3f2828`, Schwarz `#111111`. Stil: flache Facetten, harte Schlagschatten, schräge Sektionskanten.
+- Schriften: Outfit (Überschriften) und Inter (Fließtext), selbst gehostet.
 - Unterstützt Dark Mode (`prefers-color-scheme`), reduzierte Bewegung und ist vollständig per Tastatur bedienbar.
