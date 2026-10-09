@@ -53,7 +53,7 @@ Dann <http://localhost:8080> öffnen.
 ### Nach dem Deployment anpassen
 
 - **Absolute URL**: In `sitemap.xml`, `robots.txt` und den `<link rel="canonical">` / `og:url` / JSON-LD-Einträgen
-  im `<head>` jeder Seite steht aktuell `https://watotowanest.github.io/`. Mit Suchen & Ersetzen auf die echte Adresse ändern.
+  im `<head>` jeder Seite steht aktuell `https://czellmer-atl.github.io/watoto-wa-nest/`. Mit Suchen & Ersetzen auf die echte Adresse ändern.
 - **Kontaktformular**: Standardmäßig öffnet das Formular das E-Mail-Programm des Besuchers (kein Backend nötig).
   Für ein „echtes“ Formular bei [Formspree](https://formspree.io) (kostenlos bis 50 Nachrichten/Monat) ein Formular anlegen
   und die URL in `assets/js/main.js` unter `CONFIG.CONTACT_ENDPOINT` eintragen. Dann in `datenschutz.html`
