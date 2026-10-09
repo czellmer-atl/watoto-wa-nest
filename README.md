@@ -42,6 +42,8 @@ assets/js/main.js      Navigation, Spendenbetrag-Auswahl, Kopieren, Formulare
 assets/img/            Fotos (800px und 1600px), Logo, Touch-Icon
 assets/fonts/          Outfit + Inter (selbst gehostet, kein Google Fonts)
 assets/docs/           Satzung, Freistellungsbescheid
+tools/                 Seiten-Generator und Quelltexte aller Sprachen (siehe tools/README.md)
+AGENTS.md              Hintergrundwissen zum Verein und zur Website für KI-Assistenten und Entwickler
 ```
 
 ## Lokal ansehen
@@ -89,8 +91,9 @@ Danach die absolute URL (siehe unten) auf die neue Domain umstellen.
 
 ## Inhalte pflegen
 
-- Texte direkt in den HTML-Dateien ändern – in allen drei Sprachfassungen. Header und Footer sind in jeder Seite
-  enthalten; Änderungen daran bitte in allen Seiten nachziehen (Suchen & Ersetzen).
+- **Texte nicht in den fertigen HTML-Dateien ändern**, sondern in den Quellen unter `tools/src/i18n/<sprache>/`
+  (alle drei Sprachen!), danach `python3 tools/build.py` ausführen. Header und Footer liegen einmal je Sprache
+  in `tools/src/i18n/<sprache>/header.html` bzw. `footer.html`. Details in `tools/README.md` und `AGENTS.md`.
 - Neue Fotos: als JPEG in 800px und 1600px Breite unter `assets/img/` ablegen und mit `srcset` einbinden
   (Beispiele in `index.html`). Immer einen beschreibenden `alt`-Text angeben.
 - Tätigkeitsbericht / Transparenz jährlich in `transparenz.html` aktualisieren.

@@ -1,0 +1,39 @@
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="index.html" aria-label="Watoto wa Nest e.V. – Nyumbani">
+      <img src="assets/img/logo-bird.svg" alt="" width="37" height="49">
+      <span>Watoto wa Nest<small>Tunasaidia The Nest Children's Home</small></span>
+    </a>
+    <nav class="nav" aria-label="Urambazaji mkuu">
+      <a href="index.html" data-nav="index">Nyumbani</a>
+      <a href="ueber-uns.html" data-nav="ueber-uns">Kuhusu sisi</a>
+      <a href="spenden.html" data-nav="spenden">Changia</a>
+      <a href="transparenz.html" data-nav="transparenz">Uwazi</a>
+      <a href="kontakt.html" data-nav="kontakt">Wasiliana</a>
+    </nav>
+    <div class="header-actions">
+      {{langswitch}}
+      <a class="btn" href="spenden.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+        <span class="btn__text">Changia sasa</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Fungua menyu">
+        <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobile-nav">
+    <ul>
+      <li><a href="index.html" data-nav="index">Nyumbani</a></li>
+      <li><a href="ueber-uns.html" data-nav="ueber-uns">Kuhusu sisi</a></li>
+      <li><a href="spenden.html" data-nav="spenden">Changia na usaidie</a></li>
+      <li><a href="spenden.html#geschenk" data-nav="">Cheti cha zawadi</a></li>
+      <li><a href="transparenz.html" data-nav="transparenz">Uwazi</a></li>
+      <li><a href="kontakt.html" data-nav="kontakt">Wasiliana</a></li>
+    </ul>
+    <a class="btn" href="spenden.html">Changia sasa</a>
+    {{langswitch_mobile}}
+  </div>
+</header>
+<main id="main">

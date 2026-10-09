@@ -1,0 +1,39 @@
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="index.html" aria-label="Watoto wa Nest e.V. – Startseite">
+      <img src="assets/img/logo-bird.svg" alt="" width="37" height="49">
+      <span>Watoto wa Nest<small>Förderverein · The Nest Children's Home</small></span>
+    </a>
+    <nav class="nav" aria-label="Hauptnavigation">
+      <a href="index.html" data-nav="index">Start</a>
+      <a href="ueber-uns.html" data-nav="ueber-uns">Über uns</a>
+      <a href="spenden.html" data-nav="spenden">Spenden</a>
+      <a href="transparenz.html" data-nav="transparenz">Transparenz</a>
+      <a href="kontakt.html" data-nav="kontakt">Kontakt</a>
+    </nav>
+    <div class="header-actions">
+      {{langswitch}}
+      <a class="btn" href="spenden.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+        <span class="btn__text">Jetzt spenden</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menü öffnen">
+        <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobile-nav">
+    <ul>
+      <li><a href="index.html" data-nav="index">Start</a></li>
+      <li><a href="ueber-uns.html" data-nav="ueber-uns">Über uns</a></li>
+      <li><a href="spenden.html" data-nav="spenden">Spenden &amp; helfen</a></li>
+      <li><a href="spenden.html#geschenk" data-nav="">Geschenkaktion</a></li>
+      <li><a href="transparenz.html" data-nav="transparenz">Transparenz</a></li>
+      <li><a href="kontakt.html" data-nav="kontakt">Kontakt</a></li>
+    </ul>
+    <a class="btn" href="spenden.html">Jetzt spenden</a>
+    {{langswitch_mobile}}
+  </div>
+</header>
+<main id="main">
