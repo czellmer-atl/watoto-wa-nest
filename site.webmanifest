@@ -1,0 +1,13 @@
+{
+  "name": "Watoto wa Nest e.V.",
+  "short_name": "Watoto wa Nest",
+  "description": "Förderverein des The Nest Children's Home in Limuru, Kenia.",
+  "start_url": "./index.html",
+  "display": "browser",
+  "background_color": "#f8f4ec",
+  "theme_color": "#1e5a3c",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "assets/img/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

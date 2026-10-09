@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Watoto wa Nest">
+  <circle cx="32" cy="32" r="32" fill="#1E5A3C"/>
+  <g fill="#F2C14E">
+    <circle cx="22" cy="30" r="5"/>
+    <circle cx="32" cy="26" r="5.5"/>
+    <circle cx="42" cy="30" r="5"/>
+  </g>
+  <g fill="#E8772E">
+    <path d="M17.5 31.5l-3.5 1 3.2 1.6z"/>
+    <path d="M37.5 26.2l3.4 1.1-3.3 1.6z"/>
+    <path d="M46.5 31.5l3.5 1-3.2 1.6z"/>
+  </g>
+  <path d="M12 36c0 9 9 15 20 15s20-6 20-15c-6 3-13 4-20 4s-14-1-20-4z" fill="#C9792F"/>
+  <path d="M15 37.5c5 2 11 3 17 3s12-1 17-3M14 41c5 2.5 11.5 3.5 18 3.5S45 42 50 41M17 45c4 1.8 9.5 2.5 15 2.5s11-.7 15-2.5" stroke="#F7E7C7" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+</svg>
