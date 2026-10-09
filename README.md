@@ -60,6 +60,13 @@ Danach die absolute URL (siehe unten) auf die neue Domain umstellen.
   den Abschnitt „Kontaktformular“ um Formspree ergänzen.
 - **Spenden-Link**: betterplace-Projekt `98900` ist in `assets/js/main.js` (`CONFIG.BETTERPLACE_URL`) und in den
   Spenden-Buttons hinterlegt.
+- **Google-Dienste (Google for Nonprofits)**: In `assets/js/main.js` unter `CONFIG.GA_MEASUREMENT_ID` die
+  Google-Analytics-4-ID (`G-…`) und unter `CONFIG.GOOGLE_ADS_ID` die Google-Ads-ID (`AW-…`, für Ad Grants
+  Conversion-Tracking) eintragen. Sobald eine ID gesetzt ist, erscheint beim ersten Besuch automatisch das
+  Cookie-Banner; Google-Tags werden erst nach Einwilligung geladen (Consent Mode v2). Die Entscheidung liegt im
+  Local Storage unter `wwn-consent`, der Link „Cookie-Einstellungen“ im Footer öffnet das Banner erneut.
+  Klicks auf Spenden-Links werden als Ereignis `donate_click` gemeldet. Die Datenschutzerklärung beschreibt
+  bereits Google Analytics, Google Ads, Google Forms und Gmail/Google Workspace.
 
 ## Inhalte pflegen
 

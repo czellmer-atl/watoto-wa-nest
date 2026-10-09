@@ -403,3 +403,13 @@ body.has-sticky { padding-bottom: 4.5rem; } @media (min-width: 64rem) { body.has
 .link-arrow:hover { border-bottom-color: var(--red); } .link-arrow:hover::after { transform: translateX(3px); }
 .wrap-anywhere { overflow-wrap: anywhere; }
 @media print { .site-header, .site-footer, .sticky-donate, .nav-toggle, .btn { display: none !important; } body { background: #fff; color: #000; } }
+
+/* ---------- Cookie consent banner ---------- */
+.consent { position: fixed; z-index: 60; left: var(--gutter); right: var(--gutter); bottom: calc(var(--gutter) + env(safe-area-inset-bottom)); max-width: 34rem; margin-inline: auto; background: var(--bg-elev); color: var(--ink); border: var(--bd) solid var(--black); box-shadow: var(--shadow-gold); padding: var(--space-m) var(--space-l); }
+.consent[hidden] { display: none; }
+.consent h2 { font-size: var(--step-1); margin-bottom: 0.3em; }
+.consent p { font-size: var(--step--1); color: var(--ink-2); margin-bottom: var(--space-m); }
+.consent .btn-row { gap: var(--space-s); }
+.consent .btn { min-height: 2.6rem; padding: 0.55rem 1rem; font-size: 0.95rem; }
+@media (min-width: 64rem) { .consent { left: auto; right: var(--gutter); } }
+body.has-sticky .consent { bottom: calc(4.5rem + var(--gutter)); } @media (min-width: 64rem) { body.has-sticky .consent { bottom: var(--gutter); } }

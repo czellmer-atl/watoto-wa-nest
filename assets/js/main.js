@@ -8,7 +8,11 @@
   var CONFIG = {
     CONTACT_ENDPOINT: "",
     CONTACT_EMAIL: "watotowanest@gmail.com",
-    BETTERPLACE_URL: "https://www.betterplace.org/de/projects/98900"
+    BETTERPLACE_URL: "https://www.betterplace.org/de/projects/98900",
+    /* Google-Dienste: IDs eintragen, sobald das Google-for-Nonprofits-Konto steht.
+       Solange beide leer sind, erscheint kein Cookie-Banner und es wird nichts von Google geladen. */
+    GA_MEASUREMENT_ID: "",   /* z. B. "G-XXXXXXXXXX" (Google Analytics 4) */
+    GOOGLE_ADS_ID: ""        /* z. B. "AW-XXXXXXXXX" (Google Ads / Ad Grants Conversion-Tracking) */
   };
 
   document.documentElement.classList.remove("no-js");
@@ -132,6 +136,56 @@
       var s = news.querySelector(".form__status"); if (s) s.textContent = "Dein E-Mail-Programm öffnet sich. Einfach abschicken, fertig!";
     });
   }
+
+
+  /* ---------- Cookie-Einwilligung & Google-Dienste (Consent Mode v2) ---------- */
+  var CONSENT_KEY = "wwn-consent";
+  var googleEnabled = !!(CONFIG.GA_MEASUREMENT_ID || CONFIG.GOOGLE_ADS_ID);
+  function readConsent() { try { return localStorage.getItem(CONSENT_KEY); } catch (e) { return null; } }
+  function writeConsent(v) { try { localStorage.setItem(CONSENT_KEY, v); } catch (e) { /* ignore */ } }
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  var googleLoaded = false;
+  function loadGoogle() {
+    if (googleLoaded || !googleEnabled) return;
+    googleLoaded = true;
+    var first = CONFIG.GA_MEASUREMENT_ID || CONFIG.GOOGLE_ADS_ID;
+    var s = document.createElement("script");
+    s.async = true; s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(first);
+    document.head.appendChild(s);
+    gtag("js", new Date());
+    if (CONFIG.GA_MEASUREMENT_ID) gtag("config", CONFIG.GA_MEASUREMENT_ID, { anonymize_ip: true });
+    if (CONFIG.GOOGLE_ADS_ID) gtag("config", CONFIG.GOOGLE_ADS_ID);
+  }
+  function applyConsent(granted) {
+    gtag("consent", "update", {
+      analytics_storage: granted ? "granted" : "denied",
+      ad_storage: granted ? "granted" : "denied",
+      ad_user_data: granted ? "granted" : "denied",
+      ad_personalization: granted ? "granted" : "denied"
+    });
+    if (granted) loadGoogle();
+  }
+  var banner = document.querySelector(".consent");
+  function showBanner() { if (banner) { banner.hidden = false; var b = banner.querySelector("[data-consent-accept]"); if (b) b.focus(); } }
+  function hideBanner() { if (banner) banner.hidden = true; }
+  if (googleEnabled) {
+    gtag("consent", "default", { analytics_storage: "denied", ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", wait_for_update: 500 });
+    var stored = readConsent();
+    if (stored === "granted") applyConsent(true);
+    else if (stored !== "denied") showBanner();
+  }
+  document.querySelectorAll("[data-consent-accept]").forEach(function (b) { b.addEventListener("click", function () { writeConsent("granted"); applyConsent(true); hideBanner(); }); });
+  document.querySelectorAll("[data-consent-decline]").forEach(function (b) { b.addEventListener("click", function () { writeConsent("denied"); applyConsent(false); hideBanner(); }); });
+  document.querySelectorAll("[data-consent-open]").forEach(function (b) {
+    if (!googleEnabled) { b.hidden = true; return; }
+    b.hidden = false;
+    b.addEventListener("click", function (e) { e.preventDefault(); showBanner(); });
+  });
+  /* Spenden-Klicks als Ereignis melden (nur wenn Google geladen ist) */
+  document.querySelectorAll('a[href*="betterplace.org"]').forEach(function (a) {
+    a.addEventListener("click", function () { if (googleLoaded) gtag("event", "donate_click", { link_url: a.href }); });
+  });
 
   /* ---------- Current year ---------- */
   document.querySelectorAll("[data-year]").forEach(function (el) { el.textContent = String(new Date().getFullYear()); });

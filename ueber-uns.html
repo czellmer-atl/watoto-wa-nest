@@ -232,10 +232,16 @@
       <ul style="display:flex;gap:1rem;flex-wrap:wrap">
         <li><a href="impressum.html">Impressum</a></li>
         <li><a href="datenschutz.html">Datenschutz</a></li>
+        <li><a href="#" data-consent-open hidden>Cookie-Einstellungen</a></li>
       </ul>
     </div>
   </div>
 </footer>
+<div class="consent" role="dialog" aria-labelledby="consent-title" aria-describedby="consent-text" hidden>
+  <h2 id="consent-title">Cookies &amp; Google-Dienste</h2>
+  <p id="consent-text">Wir möchten Google Analytics und Google Ads nutzen, um zu verstehen, wie unsere Website genutzt wird und wie wir mehr Unterstützer:innen erreichen. Dafür brauchen wir deine Einwilligung. Ohne Zustimmung werden keine Cookies gesetzt. Details in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+  <div class="btn-row"><button class="btn" type="button" data-consent-accept>Einverstanden</button><button class="btn btn--secondary" type="button" data-consent-decline>Ablehnen</button></div>
+</div>
 <div class="sticky-donate"><a class="btn" href="spenden.html">Jetzt spenden – jeder Euro kommt an</a></div>
 <script src="assets/js/main.js" defer></script>
 </body>
