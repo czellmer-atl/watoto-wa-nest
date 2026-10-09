@@ -196,6 +196,13 @@
     a.addEventListener("click", function () { if (googleLoaded) gtag("event", "donate_click", { link_url: a.href }); });
   });
 
+  /* ---------- Language menu: close on outside click / Escape ---------- */
+  var langMenu = document.querySelector(".lang-menu");
+  if (langMenu) {
+    document.addEventListener("click", function (e) { if (langMenu.open && !langMenu.contains(e.target)) langMenu.removeAttribute("open"); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && langMenu.open) { langMenu.removeAttribute("open"); langMenu.querySelector("summary").focus(); } });
+  }
+
   /* ---------- Current year ---------- */
   document.querySelectorAll("[data-year]").forEach(function (el) { el.textContent = String(new Date().getFullYear()); });
 })();
