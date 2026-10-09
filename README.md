@@ -38,7 +38,7 @@ Dann <http://localhost:8080> öffnen.
 Die Seite liegt im Repository `czellmer-atl/watoto-wa-nest` und wird direkt aus dem Branch `main`
 veröffentlicht (Settings → Pages → Source: „Deploy from a branch“, Branch `main`, Ordner `/`).
 Jeder Push auf `main` ist nach ein bis zwei Minuten live unter
-<https://czellmer-atl.github.io/watoto-wa-nest/>.
+<https://watotowanest.org/>.
 
 ```bash
 git push origin main
@@ -53,7 +53,7 @@ Danach die absolute URL (siehe unten) auf die neue Domain umstellen.
 ### Nach dem Deployment anpassen
 
 - **Absolute URL**: In `sitemap.xml`, `robots.txt` und den `<link rel="canonical">` / `og:url` / JSON-LD-Einträgen
-  im `<head>` jeder Seite steht `https://czellmer-atl.github.io/watoto-wa-nest/`. Bei einer eigenen Domain mit Suchen & Ersetzen umstellen.
+  im `<head>` jeder Seite steht `https://watotowanest.org/`. Bei einer eigenen Domain mit Suchen & Ersetzen umstellen.
 - **Kontaktformular**: Standardmäßig öffnet das Formular das E-Mail-Programm des Besuchers (kein Backend nötig).
   Für ein „echtes“ Formular bei [Formspree](https://formspree.io) (kostenlos bis 50 Nachrichten/Monat) ein Formular anlegen
   und die URL in `assets/js/main.js` unter `CONFIG.CONTACT_ENDPOINT` eintragen. Dann in `datenschutz.html`
