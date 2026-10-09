@@ -239,6 +239,12 @@ address { font-style: normal; }
 .nav a[aria-current="page"] { color: var(--ink); font-weight: 650; background: var(--bg-sunken); }
 .header-actions { display: flex; align-items: center; gap: 0.5rem; }
 .header-actions .btn { min-height: 2.6rem; padding: 0.55rem 1.1rem; font-size: 0.95rem; }
+@media (max-width: 40rem) {
+  .header-actions .btn { width: 2.75rem; height: 2.75rem; min-height: 0; padding: 0; border-radius: 50%; }
+  .header-actions .btn svg { width: 1.25rem; height: 1.25rem; }
+  .header-actions .btn .btn__text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .brand { font-size: 1.05rem; }
+}
 .nav-toggle { display: inline-grid; place-items: center; width: 2.75rem; height: 2.75rem; border: 1.5px solid var(--line-strong); border-radius: var(--radius-pill); background: transparent; color: var(--ink); cursor: pointer; }
 .nav-toggle svg { width: 1.25rem; height: 1.25rem; }
 .nav-toggle .icon-close, .nav-toggle[aria-expanded="true"] .icon-menu { display: none; }
