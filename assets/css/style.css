@@ -445,3 +445,13 @@ body.has-sticky .consent { bottom: calc(4.5rem + var(--gutter)); } @media (min-w
 .lang-list a[aria-current="true"] { background: var(--gold); }
 .lang-list a svg { width: 1.1rem; height: 1.1rem; }
 .legal-note { border-left: 6px solid var(--gold); padding: 0.75rem 1rem; background: var(--bg-sunken); font-size: var(--step--1); color: var(--ink-2); margin-bottom: var(--space-l); }
+
+/* ---------- Footer refinements ---------- */
+.footer-legal { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 1.25rem; }
+.site-footer .footer-legal li + li { margin-top: 0; }
+.footer-online { margin-top: 0.9rem !important; }
+.footer-link { display: inline-flex; flex-direction: column; align-items: flex-start; gap: 0.1rem; padding: 0.45rem 0.7rem; border: 1.5px solid rgb(255 255 255 / 0.35); color: #fff !important; font-family: var(--font-display); font-weight: 700; font-size: 0.9rem; text-decoration: none !important; transition: border-color 0.15s, background 0.15s; }
+.footer-link__label { display: inline-flex; align-items: center; gap: 0.3rem; white-space: nowrap; }
+.footer-link svg { width: 0.9em; height: 0.9em; color: var(--gold); }
+.footer-link small { font-family: var(--font-body); font-weight: 400; font-size: 0.72rem; color: var(--footer-muted); }
+.footer-link:hover { border-color: var(--gold); background: rgb(255 255 255 / 0.06); }
