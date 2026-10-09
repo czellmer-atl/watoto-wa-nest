@@ -15,6 +15,25 @@ Reines HTML, CSS und JavaScript – kein Build-Schritt, kein Framework. Gehostet
 | `impressum.html`, `datenschutz.html` | Rechtliches |
 | `404.html` | Fehlerseite (GitHub Pages nutzt sie automatisch) |
 
+## Sprachen
+
+Die Seite gibt es auf Deutsch (Hauptsprache, im Wurzelverzeichnis), Englisch (`/en/`) und Kiswahili (`/sw/`).
+Jede Seite verlinkt ihre Übersetzungen per `hreflang` und über den Sprachumschalter DE / EN / SW im Header.
+
+| Deutsch | English | Kiswahili |
+|---|---|---|
+| `index.html` | `en/index.html` | `sw/index.html` |
+| `spenden.html` | `en/donate.html` | `sw/changia.html` |
+| `ueber-uns.html` | `en/about.html` | `sw/kuhusu-sisi.html` |
+| `transparenz.html` | `en/transparency.html` | `sw/uwazi.html` |
+| `kontakt.html` | `en/contact.html` | `sw/wasiliana.html` |
+| `impressum.html` | `en/imprint.html` | `sw/impressum.html` |
+| `datenschutz.html` | `en/privacy.html` | `sw/faragha.html` |
+
+Impressum und Datenschutz sind in Englisch und Kiswahili als Service-Übersetzungen gekennzeichnet; rechtlich
+verbindlich ist die deutsche Fassung. Die Kiswahili-Texte wurden maschinell erstellt und sollten von einer
+muttersprachlichen Person gegengelesen werden. Bei Textänderungen bitte alle drei Sprachfassungen anpassen.
+
 ## Struktur
 
 ```
@@ -70,8 +89,8 @@ Danach die absolute URL (siehe unten) auf die neue Domain umstellen.
 
 ## Inhalte pflegen
 
-- Texte direkt in den HTML-Dateien ändern. Header und Footer sind in jeder Seite enthalten –
-  Änderungen daran bitte in allen Seiten nachziehen (Suchen & Ersetzen).
+- Texte direkt in den HTML-Dateien ändern – in allen drei Sprachfassungen. Header und Footer sind in jeder Seite
+  enthalten; Änderungen daran bitte in allen Seiten nachziehen (Suchen & Ersetzen).
 - Neue Fotos: als JPEG in 800px und 1600px Breite unter `assets/img/` ablegen und mit `srcset` einbinden
   (Beispiele in `index.html`). Immer einen beschreibenden `alt`-Text angeben.
 - Tätigkeitsbericht / Transparenz jährlich in `transparenz.html` aktualisieren.

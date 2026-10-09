@@ -1,10 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://watotowanest.org/</loc><priority>1.0</priority></url>
-  <url><loc>https://watotowanest.org/spenden.html</loc><priority>0.9</priority></url>
-  <url><loc>https://watotowanest.org/ueber-uns.html</loc><priority>0.8</priority></url>
-  <url><loc>https://watotowanest.org/transparenz.html</loc><priority>0.7</priority></url>
-  <url><loc>https://watotowanest.org/kontakt.html</loc><priority>0.6</priority></url>
-  <url><loc>https://watotowanest.org/impressum.html</loc><priority>0.2</priority></url>
-  <url><loc>https://watotowanest.org/datenschutz.html</loc><priority>0.2</priority></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://watotowanest.org/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://watotowanest.org/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watotowanest.org/en/"/>
+    <xhtml:link rel="alternate" hreflang="sw" href="https://watotowanest.org/sw/"/>
+  </url>
+  <url><loc>https://watotowanest.org/spenden.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://watotowanest.org/spenden.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watotowanest.org/en/donate.html"/>
+    <xhtml:link rel="alternate" hreflang="sw" href="https://watotowanest.org/sw/changia.html"/>
+  </url>
+  <url><loc>https://watotowanest.org/ueber-uns.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://watotowanest.org/ueber-uns.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watotowanest.org/en/about.html"/>
+    <xhtml:link rel="alternate" hreflang="sw" href="https://watotowanest.org/sw/kuhusu-sisi.html"/>
+  </url>
+  <url><loc>https://watotowanest.org/transparenz.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://watotowanest.org/transparenz.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watotowanest.org/en/transparency.html"/>
+    <xhtml:link rel="alternate" hreflang="sw" href="https://watotowanest.org/sw/uwazi.html"/>
+  </url>
+  <url><loc>https://watotowanest.org/kontakt.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://watotowanest.org/kontakt.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watotowanest.org/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="sw" href="https://watotowanest.org/sw/wasiliana.html"/>
+  </url>
+  <url><loc>https://watotowanest.org/impressum.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://watotowanest.org/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watotowanest.org/en/imprint.html"/>
+    <xhtml:link rel="alternate" hreflang="sw" href="https://watotowanest.org/sw/impressum.html"/>
+  </url>
+  <url><loc>https://watotowanest.org/datenschutz.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://watotowanest.org/datenschutz.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watotowanest.org/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="sw" href="https://watotowanest.org/sw/faragha.html"/>
+  </url>
+  <url><loc>https://watotowanest.org/en/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://watotowanest.org/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watotowanest.org/en/"/>
+    <xhtml:link rel="alternate" hreflang="sw" href="https://watotowanest.org/sw/"/>
+  </url>
+  <url><loc>https://watotowanest.org/en/donate.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://watotowanest.org/spenden.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watotowanest.org/en/donate.html"/>
+    <xhtml:link rel="alternate" hreflang="sw" href="https://watotowanest.org/sw/changia.html"/>
+  </url>
+  <url><loc>https://watotowanest.org/en/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://watotowanest.org/ueber-uns.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watotowanest.org/en/about.html"/>
+    <xhtml:link rel="alternate" hreflang="sw" href="https://watotowanest.org/sw/kuhusu-sisi.html"/>
+  </url>
+  <url><loc>https://watotowanest.org/en/transparency.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://watotowanest.org/transparenz.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watotowanest.org/en/transparency.html"/>
+    <xhtml:link rel="alternate" hreflang="sw" href="https://watotowanest.org/sw/uwazi.html"/>
+  </url>
+  <url><loc>https://watotowanest.org/en/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://watotowanest.org/kontakt.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watotowanest.org/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="sw" href="https://watotowanest.org/sw/wasiliana.html"/>
+  </url>
+  <url><loc>https://watotowanest.org/en/imprint.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://watotowanest.org/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watotowanest.org/en/imprint.html"/>
+    <xhtml:link rel="alternate" hreflang="sw" href="https://watotowanest.org/sw/impressum.html"/>
+  </url>
+  <url><loc>https://watotowanest.org/en/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://watotowanest.org/datenschutz.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watotowanest.org/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="sw" href="https://watotowanest.org/sw/faragha.html"/>
+  </url>
+  <url><loc>https://watotowanest.org/sw/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://watotowanest.org/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watotowanest.org/en/"/>
+    <xhtml:link rel="alternate" hreflang="sw" href="https://watotowanest.org/sw/"/>
+  </url>
+  <url><loc>https://watotowanest.org/sw/changia.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://watotowanest.org/spenden.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watotowanest.org/en/donate.html"/>
+    <xhtml:link rel="alternate" hreflang="sw" href="https://watotowanest.org/sw/changia.html"/>
+  </url>
+  <url><loc>https://watotowanest.org/sw/kuhusu-sisi.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://watotowanest.org/ueber-uns.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watotowanest.org/en/about.html"/>
+    <xhtml:link rel="alternate" hreflang="sw" href="https://watotowanest.org/sw/kuhusu-sisi.html"/>
+  </url>
+  <url><loc>https://watotowanest.org/sw/uwazi.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://watotowanest.org/transparenz.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watotowanest.org/en/transparency.html"/>
+    <xhtml:link rel="alternate" hreflang="sw" href="https://watotowanest.org/sw/uwazi.html"/>
+  </url>
+  <url><loc>https://watotowanest.org/sw/wasiliana.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://watotowanest.org/kontakt.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watotowanest.org/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="sw" href="https://watotowanest.org/sw/wasiliana.html"/>
+  </url>
+  <url><loc>https://watotowanest.org/sw/impressum.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://watotowanest.org/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watotowanest.org/en/imprint.html"/>
+    <xhtml:link rel="alternate" hreflang="sw" href="https://watotowanest.org/sw/impressum.html"/>
+  </url>
+  <url><loc>https://watotowanest.org/sw/faragha.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://watotowanest.org/datenschutz.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://watotowanest.org/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="sw" href="https://watotowanest.org/sw/faragha.html"/>
+  </url>
 </urlset>

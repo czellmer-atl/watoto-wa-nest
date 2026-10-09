@@ -17,6 +17,15 @@
 
   document.documentElement.classList.remove("no-js");
 
+  /* ---------- UI strings per language (html lang attribute) ---------- */
+  var LANG = (document.documentElement.lang || "de").slice(0, 2);
+  var STRINGS = {
+    de: { copied: "✓ Kopiert", menuOpen: "Menü öffnen", menuClose: "Menü schließen", sending: "Wird gesendet …", sent: "Vielen Dank! Deine Nachricht ist bei uns angekommen.", failed: "Das hat leider nicht geklappt. Bitte schreib uns direkt an ", mailto: "Dein E-Mail-Programm öffnet sich mit der vorbereiteten Nachricht.", subject: "Anfrage über die Website", nlSubject: "Newsletter-Anmeldung", nlBody: "Hallo Watoto wa Nest Team,\n\nbitte nehmt mich in den Newsletter-Verteiler auf.\n\nE-Mail: ", nlStatus: "Dein E-Mail-Programm öffnet sich. Einfach abschicken, fertig!", purpose: "Spende ", nameLabel: "Name: ", emailLabel: "E-Mail: " },
+    en: { copied: "✓ Copied", menuOpen: "Open menu", menuClose: "Close menu", sending: "Sending …", sent: "Thank you! Your message has reached us.", failed: "That did not work. Please email us directly at ", mailto: "Your email app opens with the prepared message.", subject: "Enquiry via the website", nlSubject: "Newsletter subscription", nlBody: "Hello Watoto wa Nest team,\n\nplease add me to the newsletter list.\n\nEmail: ", nlStatus: "Your email app opens. Just hit send and you're done!", purpose: "Donation ", nameLabel: "Name: ", emailLabel: "Email: " },
+    sw: { copied: "✓ Imenakiliwa", menuOpen: "Fungua menyu", menuClose: "Funga menyu", sending: "Inatumwa …", sent: "Asante! Ujumbe wako umetufikia.", failed: "Samahani, haikufanikiwa. Tafadhali tuandikie moja kwa moja kwa ", mailto: "Programu yako ya barua pepe inafunguka na ujumbe ulioandaliwa.", subject: "Ujumbe kupitia tovuti", nlSubject: "Usajili wa jarida", nlBody: "Habari timu ya Watoto wa Nest,\n\ntafadhali niongezeni kwenye orodha ya jarida.\n\nBarua pepe: ", nlStatus: "Programu yako ya barua pepe inafunguka. Tuma tu, umemaliza!", purpose: "Mchango ", nameLabel: "Jina: ", emailLabel: "Barua pepe: " }
+  };
+  var T = STRINGS[LANG] || STRINGS.de;
+
   /* ---------- Header: shadow on scroll ---------- */
   var header = document.querySelector(".site-header");
   if (header) {
@@ -32,7 +41,7 @@
     var setOpen = function (open) {
       toggle.setAttribute("aria-expanded", String(open));
       mobileNav.classList.toggle("is-open", open);
-      toggle.setAttribute("aria-label", open ? "Menü schließen" : "Menü öffnen");
+      toggle.setAttribute("aria-label", open ? T.menuClose : T.menuOpen);
     };
     toggle.addEventListener("click", function () {
       setOpen(toggle.getAttribute("aria-expanded") !== "true");
@@ -50,7 +59,7 @@
       var text = btn.getAttribute("data-copy");
       var done = function () {
         btn.classList.add("is-copied");
-        btn.innerHTML = "✓ Kopiert";
+        btn.innerHTML = T.copied;
         setTimeout(function () { btn.classList.remove("is-copied"); btn.innerHTML = original; }, 1800);
       };
       if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -79,8 +88,8 @@
         b.setAttribute("aria-pressed", "true");
         var value = b.getAttribute("data-value");
         var label = b.getAttribute("data-label");
-        if (out) out.textContent = value + " €";
-        if (purpose) purpose.textContent = "Spende " + label;
+        if (out) out.textContent = LANG === "de" ? value + " €" : "€" + value;
+        if (purpose) purpose.textContent = T.purpose + label;
         if (link) link.href = CONFIG.BETTERPLACE_URL + "?amount=" + value;
       });
     });
@@ -107,20 +116,20 @@
       if (form.querySelector(".honeypot input") && form.querySelector(".honeypot input").value) return; // bot
       if (!form.checkValidity()) { form.reportValidity(); return; }
       var data = new FormData(form);
-      var name = data.get("name") || "", email = data.get("email") || "", subject = data.get("subject") || "Anfrage über die Website", message = data.get("message") || "";
+      var name = data.get("name") || "", email = data.get("email") || "", subject = data.get("subject") || T.subject, message = data.get("message") || "";
 
       if (CONFIG.CONTACT_ENDPOINT) {
-        setStatus("Wird gesendet …");
+        setStatus(T.sending);
         fetch(CONFIG.CONTACT_ENDPOINT, { method: "POST", body: data, headers: { Accept: "application/json" } })
           .then(function (r) {
-            if (r.ok) { form.reset(); setStatus("Vielen Dank! Deine Nachricht ist bei uns angekommen.", "ok"); }
+            if (r.ok) { form.reset(); setStatus(T.sent, "ok"); }
             else { throw new Error("bad status"); }
           })
-          .catch(function () { setStatus("Das hat leider nicht geklappt. Bitte schreib uns direkt an " + CONFIG.CONTACT_EMAIL + ".", "error"); });
+          .catch(function () { setStatus(T.failed + CONFIG.CONTACT_EMAIL + ".", "error"); });
       } else {
-        var body = "Name: " + name + "\nE-Mail: " + email + "\n\n" + message;
+        var body = T.nameLabel + name + "\n" + T.emailLabel + email + "\n\n" + message;
         window.location.href = "mailto:" + CONFIG.CONTACT_EMAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
-        setStatus("Dein E-Mail-Programm öffnet sich mit der vorbereiteten Nachricht.", "ok");
+        setStatus(T.mailto, "ok");
       }
     });
   }
@@ -132,8 +141,8 @@
       e.preventDefault();
       if (!news.checkValidity()) { news.reportValidity(); return; }
       var email = new FormData(news).get("email");
-      window.location.href = "mailto:" + CONFIG.CONTACT_EMAIL + "?subject=" + encodeURIComponent("Newsletter-Anmeldung") + "&body=" + encodeURIComponent("Hallo Watoto wa Nest Team,\n\nbitte nehmt mich in den Newsletter-Verteiler auf.\n\nE-Mail: " + email + "\n\nViele Grüße");
-      var s = news.querySelector(".form__status"); if (s) s.textContent = "Dein E-Mail-Programm öffnet sich. Einfach abschicken, fertig!";
+      window.location.href = "mailto:" + CONFIG.CONTACT_EMAIL + "?subject=" + encodeURIComponent(T.nlSubject) + "&body=" + encodeURIComponent(T.nlBody + email + "\n");
+      var s = news.querySelector(".form__status"); if (s) s.textContent = T.nlStatus;
     });
   }
 
