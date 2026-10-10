@@ -171,6 +171,9 @@ address { font-style: normal; }
 .btn--block { width: 100%; }
 .btn-row { display: flex; flex-wrap: wrap; gap: var(--space-m) var(--space-m); }
 .btn-row--center { justify-content: center; }
+.btn-row--pair { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; gap: var(--space-s); }
+.btn-row--pair .btn { text-align: center; }
+@media (max-width: 30rem) { .btn-row--pair { grid-template-columns: 1fr; } }
 
 /* ---------- Header ---------- */
 .site-header { position: sticky; top: 0; z-index: 50; background: var(--bg); border-bottom: var(--bd) solid transparent; transition: border-color 0.2s; }
