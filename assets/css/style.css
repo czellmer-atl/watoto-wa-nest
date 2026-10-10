@@ -263,11 +263,10 @@ address { font-style: normal; }
 .donate-alt strong svg { width: 0.85em; height: 0.85em; }
 .donate-alt p { margin: 0.15rem 0 0; font-size: var(--step--1); color: var(--ink-2); }
 .bp__intro { font-size: var(--step--1); color: var(--ink-2); margin: 0; }
-.bp-widget { width: 320px; max-width: 100%; margin: var(--space-m) auto 0; border: var(--bd) solid var(--black); box-shadow: var(--shadow-s); background: #fff; line-height: 0; }
-.bp-widget iframe { display: block; width: 100%; height: 320px; border: 0; }
-.bp__link { margin: var(--space-m) 0 0; text-align: center; font-size: var(--step--1); }
-.bp__link a { display: inline-flex; align-items: center; gap: 0.3rem; font-weight: 700; }
-.bp__link svg { width: 0.9em; height: 0.9em; }
+.btn--betterplace { --_bg: var(--bg-elev); --_ink: var(--ink); --betterplace: #8cc63f; }
+.btn--betterplace svg { color: var(--betterplace); width: 1.3em; height: 1.3em; }
+.btn--betterplace:hover { background: var(--betterplace); color: #111; }
+.btn--betterplace:hover svg { color: #111; }
 .pay-methods { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: var(--space-m); padding: 0; list-style: none; }
 .pay-methods li { font-size: 0.78rem; font-weight: 600; color: var(--ink-2); padding: 0.25rem 0.6rem; border: 1.5px solid var(--line); border-radius: var(--radius-pill); background: var(--bg-elev); }
 .footer-alt { font-size: 0.8rem !important; margin-top: 0.5rem !important; color: var(--footer-muted); }
@@ -418,7 +417,7 @@ figcaption { font-size: var(--step--1); color: var(--muted); margin-top: 0.6rem;
 body.has-sticky { padding-bottom: 4.5rem; } @media (min-width: 64rem) { body.has-sticky { padding-bottom: 0; } }
 
 /* ---------- Utilities ---------- */
-.mt-l { margin-top: var(--space-l); } .mt-xl { margin-top: var(--space-xl); } .mb-l { margin-bottom: var(--space-l); }
+.mt-m { margin-top: var(--space-m); } .mt-l { margin-top: var(--space-l); } .mt-xl { margin-top: var(--space-xl); } .mb-l { margin-bottom: var(--space-l); }
 .text-center { text-align: center; } .text-center p { margin-inline: auto; }
 .badge { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--font-display); font-size: 0.8rem; font-weight: 700; padding: 0.35rem 0.75rem; background: var(--green); color: #fff; border: 1.5px solid var(--black); }
 .badge--sun { background: var(--gold); color: #111; }
