@@ -126,6 +126,8 @@ address { font-style: normal; }
 .section--tight { padding-block: var(--space-xl); }
 .section--sunken { background: var(--bg-sunken); clip-path: polygon(0 0, 100% var(--cut), 100% 100%, 0 calc(100% - var(--cut))); padding-block: calc(var(--space-2xl) + var(--cut)); }
 .section--forest { background: var(--brown); color: #f4efe9; clip-path: polygon(0 var(--cut), 100% 0, 100% calc(100% - var(--cut)), 100% 100%, 0 100%); padding-block: calc(var(--space-2xl) + var(--cut)) var(--space-2xl); }
+/* Sunken directly followed by forest: pull up and use the same slope so no white wedge shows between the two angled edges. */
+.section--sunken + .section--forest { margin-top: calc(-1 * var(--cut) - 2px); clip-path: polygon(0 0, 100% var(--cut), 100% 100%, 0 100%); }
 .section--forest h2, .section--forest h3 { color: #fff; }
 .section--forest a { color: var(--gold); }
 .section--forest .btn--ghost-light { --_bd: var(--gold); --_ink: #fff; }
