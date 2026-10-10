@@ -80,7 +80,7 @@ Danach die absolute URL (siehe unten) auf die neue Domain umstellen.
   und die URL in `assets/js/main.js` unter `CONFIG.CONTACT_ENDPOINT` eintragen. Dann in `datenschutz.html`
   den Abschnitt „Kontaktformular“ um Formspree ergänzen.
 - **Spenden-Links**: PayPal-Spendenbutton `DTP7BRTEBJQJ2` (Hauptweg, `CONFIG.PAYPAL_URL`) und
-  betterplace-Projekt `98900` (Alternative, `CONFIG.BETTERPLACE_URL`) stehen in `assets/js/main.js` und in den
+  betterplace-Projekt `144065` (Alternative mit Widget, `CONFIG.BETTERPLACE_URL`) stehen in `assets/js/main.js` und in den
   Spenden-Buttons der Seitenquellen unter `tools/src/`.
 - **Google-Dienste (Google for Nonprofits)**: In `assets/js/main.js` unter `CONFIG.GA_MEASUREMENT_ID` die
   Google-Analytics-4-ID (`G-…`) und unter `CONFIG.GOOGLE_ADS_ID` die Google-Ads-ID (`AW-…`, für Ad Grants

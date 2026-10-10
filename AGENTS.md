@@ -38,8 +38,13 @@ priority on every page.
   The PayPal page offers one-time/monthly/yearly, PayPal account or guest card payment. It does **not**
   accept a prefilled amount (`?amount=` is ignored, verified 2026-10-10), so the site shows the chosen
   amount as a hint and donors type it at PayPal. JS appends `locale.x` per language.
-- Online donations, secondary: betterplace.org project 98900 (`CONFIG.BETTERPLACE_URL`), presented as the
-  "independent platform" alternative below the PayPal button; amount is prefilled via `?amount=`.
+- Online donations, secondary: betterplace.org project **144065** "The Nest Children's Home Limuru"
+  (since Oct 2024; an older project 98900 "The Nest Home" of the same carrier still exists but is not linked).
+  The donate page embeds betterplace's project widget (iframe, `project-widget.betterplace.org`, shows
+  funding status, cannot take an amount) below the PayPal button, plus a link to the donation form
+  `https://www.betterplace.org/<de|en>/donate/platform/projects/144065?donation_amount=<n>` which
+  prefills the chosen amount (verified 2026-10-10; `?amount=` does nothing). `CONFIG.BETTERPLACE_URL` in
+  `assets/js/main.js` holds the form base URL per language. The iframe is covered in the privacy policy.
 - Donation amounts used site-wide (monthly): €10 school supplies, €40 food, €60 baby food,
   €300 house mother salary, €600 nurse salary. (A former "Geschenkaktion" with printable gift certificates
   was removed in October 2026 because it saw little uptake; do not reintroduce it without asking.)

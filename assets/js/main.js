@@ -8,11 +8,11 @@
   var CONFIG = {
     CONTACT_ENDPOINT: "",
     CONTACT_EMAIL: "watotowanest@gmail.com",
-    /* Online-Spenden: PayPal (Hauptweg, gehosteter Spenden-Button) und betterplace (Alternative).
+    /* Online-Spenden: PayPal (Hauptweg, gehosteter Spenden-Button) und betterplace (Alternative, Spendenformular mit vorbelegtem Betrag über ?donation_amount=).
        Der PayPal-Button akzeptiert keinen vorgefüllten Betrag – Spender:innen tragen ihn auf der PayPal-Seite ein. */
     PAYPAL_URL: "https://www.paypal.com/donate/?hosted_button_id=DTP7BRTEBJQJ2",
     PAYPAL_LOCALE: { de: "de_DE", en: "en_GB", sw: "en_GB" },
-    BETTERPLACE_URL: { de: "https://www.betterplace.org/de/projects/98900", en: "https://www.betterplace.org/en/projects/98900", sw: "https://www.betterplace.org/en/projects/98900" },
+    BETTERPLACE_URL: { de: "https://www.betterplace.org/de/donate/platform/projects/144065", en: "https://www.betterplace.org/en/donate/platform/projects/144065", sw: "https://www.betterplace.org/en/donate/platform/projects/144065" },
     /* Google-Dienste: IDs eintragen, sobald das Google-for-Nonprofits-Konto steht.
        Solange beide leer sind, erscheint kein Cookie-Banner und es wird nichts von Google geladen. */
     GA_MEASUREMENT_ID: "",   /* z. B. "G-XXXXXXXXXX" (Google Analytics 4) */
@@ -95,7 +95,7 @@
         var label = b.getAttribute("data-label");
         outs.forEach(function (o) { o.textContent = LANG === "de" ? value + " €" : "€" + value; });
         if (purpose) purpose.textContent = T.purpose + label;
-        bpLinks.forEach(function (l) { l.href = bpBase + "?amount=" + value; });
+        bpLinks.forEach(function (l) { l.href = bpBase + "?donation_amount=" + value; });
       });
     });
   }

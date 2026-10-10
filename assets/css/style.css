@@ -262,6 +262,12 @@ address { font-style: normal; }
 .donate-alt strong { display: flex; align-items: center; gap: 0.3rem; font-family: var(--font-display); font-size: var(--step-0); }
 .donate-alt strong svg { width: 0.85em; height: 0.85em; }
 .donate-alt p { margin: 0.15rem 0 0; font-size: var(--step--1); color: var(--ink-2); }
+.bp__intro { font-size: var(--step--1); color: var(--ink-2); margin: 0; }
+.bp-widget { width: 320px; max-width: 100%; margin: var(--space-m) auto 0; border: var(--bd) solid var(--black); box-shadow: var(--shadow-s); background: #fff; line-height: 0; }
+.bp-widget iframe { display: block; width: 100%; height: 320px; border: 0; }
+.bp__link { margin: var(--space-m) 0 0; text-align: center; font-size: var(--step--1); }
+.bp__link a { display: inline-flex; align-items: center; gap: 0.3rem; font-weight: 700; }
+.bp__link svg { width: 0.9em; height: 0.9em; }
 .pay-methods { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: var(--space-m); padding: 0; list-style: none; }
 .pay-methods li { font-size: 0.78rem; font-weight: 600; color: var(--ink-2); padding: 0.25rem 0.6rem; border: 1.5px solid var(--line); border-radius: var(--radius-pill); background: var(--bg-elev); }
 .footer-alt { font-size: 0.8rem !important; margin-top: 0.5rem !important; color: var(--footer-muted); }
