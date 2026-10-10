@@ -41,8 +41,8 @@ priority on every page.
 - Online donations, secondary: betterplace.org project 98900 (`CONFIG.BETTERPLACE_URL`), presented as the
   "independent platform" alternative below the PayPal button; amount is prefilled via `?amount=`.
 - Donation amounts used site-wide (monthly): €10 school supplies, €40 food, €60 baby food,
-  €300 house mother salary, €600 nurse salary. The "Geschenkaktion" lets donors transfer one of these
-  with reference "Geschenk-Urkunde; <email>" and receive a printable gift certificate by email.
+  €300 house mother salary, €600 nurse salary. (A former "Geschenkaktion" with printable gift certificates
+  was removed in October 2026 because it saw little uptake; do not reintroduce it without asking.)
 - Transparency page follows the Initiative Transparente Zivilgesellschaft (10 points). PDFs in
   `assets/docs/` (Satzung, Freistellungsbescheid). Update the annual report there each year.
 

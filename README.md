@@ -7,8 +7,8 @@ Reines HTML, CSS und JavaScript – kein Build-Schritt, kein Framework. Gehostet
 
 | Datei | Inhalt |
 |---|---|
-| `index.html` | Startseite: Mission, Projekt, Spendenbeträge, Team, Geschenkaktion, Newsletter |
-| `spenden.html` | Online-Spende (PayPal, alternativ betterplace), Überweisung mit Kopier-Buttons, Geschenkaktion, Vertrauen |
+| `index.html` | Startseite: Mission, Projekt, Spendenbeträge, Team, Newsletter |
+| `spenden.html` | Online-Spende (PayPal, alternativ betterplace), Überweisung mit Kopier-Buttons, Vertrauen |
 | `ueber-uns.html` | Wer wir sind, The Nest, die drei Einrichtungen, Bericht 2025 |
 | `transparenz.html` | Initiative Transparente Zivilgesellschaft (10 Punkte), Satzung, Freistellungsbescheid |
 | `kontakt.html` | Kontaktformular und Kontaktdaten |
