@@ -8,7 +8,7 @@ Reines HTML, CSS und JavaScript – kein Build-Schritt, kein Framework. Gehostet
 | Datei | Inhalt |
 |---|---|
 | `index.html` | Startseite: Mission, Projekt, Spendenbeträge, Team, Geschenkaktion, Newsletter |
-| `spenden.html` | Online-Spende (betterplace), Überweisung mit Kopier-Buttons, Geschenkaktion, Vertrauen |
+| `spenden.html` | Online-Spende (PayPal, alternativ betterplace), Überweisung mit Kopier-Buttons, Geschenkaktion, Vertrauen |
 | `ueber-uns.html` | Wer wir sind, The Nest, die drei Einrichtungen, Bericht 2025 |
 | `transparenz.html` | Initiative Transparente Zivilgesellschaft (10 Punkte), Satzung, Freistellungsbescheid |
 | `kontakt.html` | Kontaktformular und Kontaktdaten |
@@ -79,8 +79,9 @@ Danach die absolute URL (siehe unten) auf die neue Domain umstellen.
   Für ein „echtes“ Formular bei [Formspree](https://formspree.io) (kostenlos bis 50 Nachrichten/Monat) ein Formular anlegen
   und die URL in `assets/js/main.js` unter `CONFIG.CONTACT_ENDPOINT` eintragen. Dann in `datenschutz.html`
   den Abschnitt „Kontaktformular“ um Formspree ergänzen.
-- **Spenden-Link**: betterplace-Projekt `98900` ist in `assets/js/main.js` (`CONFIG.BETTERPLACE_URL`) und in den
-  Spenden-Buttons hinterlegt.
+- **Spenden-Links**: PayPal-Spendenbutton `DTP7BRTEBJQJ2` (Hauptweg, `CONFIG.PAYPAL_URL`) und
+  betterplace-Projekt `98900` (Alternative, `CONFIG.BETTERPLACE_URL`) stehen in `assets/js/main.js` und in den
+  Spenden-Buttons der Seitenquellen unter `tools/src/`.
 - **Google-Dienste (Google for Nonprofits)**: In `assets/js/main.js` unter `CONFIG.GA_MEASUREMENT_ID` die
   Google-Analytics-4-ID (`G-…`) und unter `CONFIG.GOOGLE_ADS_ID` die Google-Ads-ID (`AW-…`, für Ad Grants
   Conversion-Tracking) eintragen. Sobald eine ID gesetzt ist, erscheint beim ersten Besuch automatisch das

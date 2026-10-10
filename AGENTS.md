@@ -33,7 +33,13 @@ priority on every page.
 - Email: watotowanest@gmail.com (a Workspace address on watotowanest.org is planned, see Open items)
 - Phone: +49 176 93178582 · Instagram @watotowanest_ · Facebook "The Nest Home"
 - Bank: Watoto wa Nest e.V., IBAN DE13 7016 9568 0000 7559 66, BIC GENODEF1TAE
-- Online donations: betterplace.org project 98900 (`CONFIG.BETTERPLACE_URL` in `assets/js/main.js`)
+- Online donations, primary: **PayPal** hosted donate button `DTP7BRTEBJQJ2`
+  (`https://www.paypal.com/donate/?hosted_button_id=DTP7BRTEBJQJ2`, `CONFIG.PAYPAL_URL` in `assets/js/main.js`).
+  The PayPal page offers one-time/monthly/yearly, PayPal account or guest card payment. It does **not**
+  accept a prefilled amount (`?amount=` is ignored, verified 2026-10-10), so the site shows the chosen
+  amount as a hint and donors type it at PayPal. JS appends `locale.x` per language.
+- Online donations, secondary: betterplace.org project 98900 (`CONFIG.BETTERPLACE_URL`), presented as the
+  "independent platform" alternative below the PayPal button; amount is prefilled via `?amount=`.
 - Donation amounts used site-wide (monthly): €10 school supplies, €40 food, €60 baby food,
   €300 house mother salary, €600 nurse salary. The "Geschenkaktion" lets donors transfer one of these
   with reference "Geschenk-Urkunde; <email>" and receive a printable gift certificate by email.

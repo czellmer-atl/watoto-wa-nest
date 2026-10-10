@@ -8,7 +8,11 @@
   var CONFIG = {
     CONTACT_ENDPOINT: "",
     CONTACT_EMAIL: "watotowanest@gmail.com",
-    BETTERPLACE_URL: "https://www.betterplace.org/de/projects/98900",
+    /* Online-Spenden: PayPal (Hauptweg, gehosteter Spenden-Button) und betterplace (Alternative).
+       Der PayPal-Button akzeptiert keinen vorgefüllten Betrag – Spender:innen tragen ihn auf der PayPal-Seite ein. */
+    PAYPAL_URL: "https://www.paypal.com/donate/?hosted_button_id=DTP7BRTEBJQJ2",
+    PAYPAL_LOCALE: { de: "de_DE", en: "en_GB", sw: "en_GB" },
+    BETTERPLACE_URL: { de: "https://www.betterplace.org/de/projects/98900", en: "https://www.betterplace.org/en/projects/98900", sw: "https://www.betterplace.org/en/projects/98900" },
     /* Google-Dienste: IDs eintragen, sobald das Google-for-Nonprofits-Konto steht.
        Solange beide leer sind, erscheint kein Cookie-Banner und es wird nichts von Google geladen. */
     GA_MEASUREMENT_ID: "",   /* z. B. "G-XXXXXXXXXX" (Google Analytics 4) */
@@ -79,21 +83,28 @@
   var amountGroup = document.querySelector("[data-amounts]");
   if (amountGroup) {
     var buttons = amountGroup.querySelectorAll(".amount");
-    var out = document.querySelector("[data-amount-out]");
-    var link = document.querySelector("[data-amount-link]");
+    var outs = document.querySelectorAll("[data-amount-out]");
+    var bpLinks = document.querySelectorAll('[data-amount-link="betterplace"]');
     var purpose = document.querySelector("[data-amount-purpose]");
+    var bpBase = CONFIG.BETTERPLACE_URL[LANG] || CONFIG.BETTERPLACE_URL.de;
     buttons.forEach(function (b) {
       b.addEventListener("click", function () {
         buttons.forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
         b.setAttribute("aria-pressed", "true");
         var value = b.getAttribute("data-value");
         var label = b.getAttribute("data-label");
-        if (out) out.textContent = LANG === "de" ? value + " €" : "€" + value;
+        outs.forEach(function (o) { o.textContent = LANG === "de" ? value + " €" : "€" + value; });
         if (purpose) purpose.textContent = T.purpose + label;
-        if (link) link.href = CONFIG.BETTERPLACE_URL + "?amount=" + value;
+        bpLinks.forEach(function (l) { l.href = bpBase + "?amount=" + value; });
       });
     });
   }
+
+  /* ---------- PayPal links: locale per language ---------- */
+  document.querySelectorAll('a[href*="paypal.com/donate"]').forEach(function (a) {
+    var loc = CONFIG.PAYPAL_LOCALE[LANG] || CONFIG.PAYPAL_LOCALE.de;
+    if (a.href.indexOf("locale.x=") === -1) a.href += (a.href.indexOf("?") === -1 ? "?" : "&") + "locale.x=" + loc;
+  });
 
   /* ---------- Sticky mobile donate bar ---------- */
   var sticky = document.querySelector(".sticky-donate");
@@ -192,8 +203,9 @@
     b.addEventListener("click", function (e) { e.preventDefault(); showBanner(); });
   });
   /* Spenden-Klicks als Ereignis melden (nur wenn Google geladen ist) */
-  document.querySelectorAll('a[href*="betterplace.org"]').forEach(function (a) {
-    a.addEventListener("click", function () { if (googleLoaded) gtag("event", "donate_click", { link_url: a.href }); });
+  document.querySelectorAll('a[href*="paypal.com/donate"], a[href*="betterplace.org"]').forEach(function (a) {
+    var method = a.href.indexOf("paypal.com") !== -1 ? "paypal" : "betterplace";
+    a.addEventListener("click", function () { if (googleLoaded) gtag("event", "donate_click", { method: method, link_url: a.href }); });
   });
 
   /* ---------- Language menu: close on outside click / Escape ---------- */
