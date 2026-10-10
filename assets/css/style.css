@@ -161,6 +161,7 @@ address { font-style: normal; }
 .btn:hover { background: var(--primary-hover); color: var(--_ink); transform: translate(-2px, -2px); box-shadow: var(--shadow-m); }
 .btn:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0 var(--black); }
 .btn svg { width: 1.1em; height: 1.1em; flex: none; }
+.btn .btn__ext { width: 0.8em; height: 0.8em; opacity: 0.8; margin-left: -0.1em; }
 .btn--lg { min-height: 3.5rem; padding: 0.95rem 1.8rem; font-size: 1.15rem; }
 .btn--secondary { --_bg: var(--bg-elev); --_ink: var(--ink); }
 .btn--secondary:hover { background: var(--gold); color: #111; }
@@ -221,6 +222,7 @@ address { font-style: normal; }
 .hero h1 { font-size: clamp(2.4rem, 1.4rem + 3.8vw, 4.6rem); color: #fff; margin-bottom: 0.35em; font-weight: 800; }
 .hero h1 em { font-style: normal; color: var(--gold); }
 .hero p { font-size: var(--step-1); line-height: 1.45; color: rgb(255 255 255 / 0.9); max-width: 36rem; margin-bottom: 1.6em; }
+.hero .eyebrow, .page-head--image .eyebrow { color: var(--gold); background: rgb(17 17 17 / 0.6); padding: 0.35rem 0.75rem 0.35rem 0.6rem; border-radius: var(--radius-s); max-width: 100%; }
 .hero .eyebrow { color: var(--gold); } .hero .eyebrow::before { background: var(--red-bright); }
 .hero .btn-row { margin-bottom: var(--space-l); }
 
@@ -239,6 +241,7 @@ address { font-style: normal; }
 /* ---------- Cards ---------- */
 .card { background: var(--bg-elev); border: var(--bd) solid var(--black); border-radius: var(--radius-s); padding: var(--space-l); box-shadow: var(--shadow-s); transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease); position: relative; }
 .card:hover { transform: translate(-2px, -2px); box-shadow: var(--shadow-m); }
+.card--static:hover { transform: none; box-shadow: var(--shadow-s); }
 .card h3 { font-size: var(--step-1); margin-bottom: 0.5em; }
 .card p { color: var(--ink-2); }
 .card__icon { width: 3rem; height: 3rem; display: grid; place-items: center; background: var(--gold); border: var(--bd) solid var(--black); color: #111; margin-bottom: var(--space-m); clip-path: polygon(20% 0, 100% 0, 80% 100%, 0 100%); }
@@ -268,7 +271,8 @@ address { font-style: normal; }
 .btn--betterplace:hover { background: #76ad2f; color: #111; }
 .footer-alt { font-size: 0.8rem !important; margin-top: 0.5rem !important; color: var(--footer-muted); }
 
-.amounts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr)); gap: var(--space-s); }
+.amounts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 9.5rem), 1fr)); gap: var(--space-s); }
+@media (max-width: 30rem) { .amount { padding: 0.8rem 0.85rem; } .amount__label { font-size: 0.8rem; } }
 .amount { display: grid; gap: 0.25rem; text-align: left; padding: 1rem 1.1rem; cursor: pointer; background: var(--bg-elev); border: var(--bd) solid var(--black); border-radius: var(--radius-s); color: inherit; font: inherit; box-shadow: var(--shadow-s); transition: transform 0.15s var(--ease), box-shadow 0.15s var(--ease), background 0.15s; }
 .amount:hover { transform: translate(-2px, -2px); box-shadow: var(--shadow-m); }
 .amount[aria-pressed="true"] { background: var(--gold); box-shadow: var(--shadow-m); }

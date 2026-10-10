@@ -104,8 +104,10 @@ Scroll reveal is CSS scroll-driven (`animation-timeline: view()`), no JS.
 
 ### JavaScript (`assets/js/main.js`)
 
-Mobile nav, language-menu close, copy-to-clipboard, donation amount picker (updates betterplace link
-and transfer reference), sticky mobile donate bar, contact and newsletter forms (open the visitor's
+Mobile nav, language-menu close, copy-to-clipboard, donation amount picker (updates betterplace link,
+transfer reference and the home page's "Per Überweisung" link, which carries `?amount=<n>` to the donate
+page where the matching amount is preselected on load), sticky mobile donate bar (links to `#online` on the
+donate page itself), contact and newsletter forms (open the visitor's
 mail client via `mailto:`; optional `CONFIG.CONTACT_ENDPOINT` for Formspree), cookie consent with
 Google Consent Mode v2. Google tags load **only** after consent and only when
 `CONFIG.GA_MEASUREMENT_ID` / `CONFIG.GOOGLE_ADS_ID` are set; both are empty until the Google for

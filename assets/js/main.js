@@ -85,6 +85,7 @@
     var buttons = amountGroup.querySelectorAll(".amount");
     var outs = document.querySelectorAll("[data-amount-out]");
     var bpLinks = document.querySelectorAll('[data-amount-link="betterplace"]');
+    var pageLinks = document.querySelectorAll("[data-amount-page-link]");
     var purpose = document.querySelector("[data-amount-purpose]");
     var bpBase = CONFIG.BETTERPLACE_URL[LANG] || CONFIG.BETTERPLACE_URL.de;
     buttons.forEach(function (b) {
@@ -96,8 +97,17 @@
         outs.forEach(function (o) { o.textContent = LANG === "de" ? value + "\u00a0€" : "€" + value; });
         if (purpose) purpose.textContent = T.purpose + label;
         bpLinks.forEach(function (l) { l.href = bpBase + "?donation_amount=" + value; });
+        pageLinks.forEach(function (l) {
+          var h = l.getAttribute("href"), hash = h.indexOf("#") !== -1 ? h.slice(h.indexOf("#")) : "";
+          l.href = h.split("?")[0].split("#")[0] + "?amount=" + value + hash;
+        });
       });
     });
+    /* Betrag aus der URL übernehmen (z. B. von der Startseite: spenden.html?amount=600#ueberweisung) */
+    var preset = new URLSearchParams(window.location.search).get("amount");
+    if (preset) {
+      buttons.forEach(function (b) { if (b.getAttribute("data-value") === preset) b.click(); });
+    }
   }
 
   /* ---------- PayPal links: locale per language ---------- */
@@ -110,6 +120,9 @@
   var sticky = document.querySelector(".sticky-donate");
   if (sticky) {
     document.body.classList.add("has-sticky");
+    /* Auf der Spendenseite selbst direkt zur Online-Spende springen statt die Seite neu zu laden */
+    var stickyLink = sticky.querySelector("a");
+    if (stickyLink && document.getElementById("online")) stickyLink.setAttribute("href", "#online");
     var hero = document.querySelector(".hero, .page-head");
     var threshold = hero ? hero.offsetHeight * 0.6 : 300;
     var onStickyScroll = function () { sticky.classList.toggle("is-visible", window.scrollY > threshold); };
