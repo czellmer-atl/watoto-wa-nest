@@ -24,9 +24,9 @@
   /* ---------- UI strings per language (html lang attribute) ---------- */
   var LANG = (document.documentElement.lang || "de").slice(0, 2);
   var STRINGS = {
-    de: { copied: "✓ Kopiert", menuOpen: "Menü öffnen", menuClose: "Menü schließen", sending: "Wird gesendet …", sent: "Vielen Dank! Deine Nachricht ist bei uns angekommen.", failed: "Das hat leider nicht geklappt. Bitte schreib uns direkt an ", mailto: "Dein E-Mail-Programm öffnet sich mit der vorbereiteten Nachricht.", subject: "Anfrage über die Website", nlSubject: "Newsletter-Anmeldung", nlBody: "Hallo Watoto wa Nest Team,\n\nbitte nehmt mich in den Newsletter-Verteiler auf.\n\nE-Mail: ", nlStatus: "Dein E-Mail-Programm öffnet sich. Einfach abschicken, fertig!", purpose: "Spende ", nameLabel: "Name: ", emailLabel: "E-Mail: " },
-    en: { copied: "✓ Copied", menuOpen: "Open menu", menuClose: "Close menu", sending: "Sending …", sent: "Thank you! Your message has reached us.", failed: "That did not work. Please email us directly at ", mailto: "Your email app opens with the prepared message.", subject: "Enquiry via the website", nlSubject: "Newsletter subscription", nlBody: "Hello Watoto wa Nest team,\n\nplease add me to the newsletter list.\n\nEmail: ", nlStatus: "Your email app opens. Just hit send and you're done!", purpose: "Donation ", nameLabel: "Name: ", emailLabel: "Email: " },
-    sw: { copied: "✓ Imenakiliwa", menuOpen: "Fungua menyu", menuClose: "Funga menyu", sending: "Inatumwa …", sent: "Asante! Ujumbe wako umetufikia.", failed: "Samahani, haikufanikiwa. Tafadhali tuandikie moja kwa moja kwa ", mailto: "Programu yako ya barua pepe inafunguka na ujumbe ulioandaliwa.", subject: "Ujumbe kupitia tovuti", nlSubject: "Usajili wa jarida", nlBody: "Habari timu ya Watoto wa Nest,\n\ntafadhali niongezeni kwenye orodha ya jarida.\n\nBarua pepe: ", nlStatus: "Programu yako ya barua pepe inafunguka. Tuma tu, umemaliza!", purpose: "Mchango ", nameLabel: "Jina: ", emailLabel: "Barua pepe: " }
+    de: { copied: "✓ Kopiert", menuOpen: "Menü öffnen", menuClose: "Menü schließen", sending: "Wird gesendet …", sent: "Vielen Dank! Deine Nachricht ist bei uns angekommen.", failed: "Das hat leider nicht geklappt. Bitte schreib uns direkt an ", mailto: "Dein E-Mail-Programm öffnet sich mit der vorbereiteten Nachricht.", subject: "Anfrage über die Website", purpose: "Spende ", nameLabel: "Name: ", emailLabel: "E-Mail: " },
+    en: { copied: "✓ Copied", menuOpen: "Open menu", menuClose: "Close menu", sending: "Sending …", sent: "Thank you! Your message has reached us.", failed: "That did not work. Please email us directly at ", mailto: "Your email app opens with the prepared message.", subject: "Enquiry via the website", purpose: "Donation ", nameLabel: "Name: ", emailLabel: "Email: " },
+    sw: { copied: "✓ Imenakiliwa", menuOpen: "Fungua menyu", menuClose: "Funga menyu", sending: "Inatumwa …", sent: "Asante! Ujumbe wako umetufikia.", failed: "Samahani, haikufanikiwa. Tafadhali tuandikie moja kwa moja kwa ", mailto: "Programu yako ya barua pepe inafunguka na ujumbe ulioandaliwa.", subject: "Ujumbe kupitia tovuti", purpose: "Mchango ", nameLabel: "Jina: ", emailLabel: "Barua pepe: " }
   };
   var T = STRINGS[LANG] || STRINGS.de;
 
@@ -157,19 +157,6 @@
       }
     });
   }
-
-  /* ---------- Newsletter form (mailto based) ---------- */
-  var news = document.querySelector("[data-newsletter-form]");
-  if (news) {
-    news.addEventListener("submit", function (e) {
-      e.preventDefault();
-      if (!news.checkValidity()) { news.reportValidity(); return; }
-      var email = new FormData(news).get("email");
-      window.location.href = "mailto:" + CONFIG.CONTACT_EMAIL + "?subject=" + encodeURIComponent(T.nlSubject) + "&body=" + encodeURIComponent(T.nlBody + email + "\n");
-      var s = news.querySelector(".form__status"); if (s) s.textContent = T.nlStatus;
-    });
-  }
-
 
   /* ---------- Cookie-Einwilligung & Google-Dienste (Consent Mode v2) ---------- */
   var CONSENT_KEY = "wwn-consent";

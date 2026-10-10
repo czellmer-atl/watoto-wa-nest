@@ -49,6 +49,10 @@ priority on every page.
 - Donation amounts used site-wide (monthly): €10 school supplies, €40 food, €60 baby food,
   €300 house mother salary, €600 nurse salary. (A former "Geschenkaktion" with printable gift certificates
   was removed in October 2026 because it saw little uptake; do not reintroduce it without asking.)
+- Newsletter: there is no own mailing list. The home page links to the betterplace project page, where
+  visitors click "Mehr zum Newsletter" (box "Informiere und engagiere dich") to subscribe to project
+  news via betterplace. betterplace offers no direct subscription URL (checked 2026-10-10: the modal
+  `#project-newsletter-subscription-modal` is rendered only after the click, hash links do nothing).
 - Transparency page follows the Initiative Transparente Zivilgesellschaft (10 points). PDFs in
   `assets/docs/` (Satzung, Freistellungsbescheid). Update the annual report there each year.
 
@@ -107,8 +111,8 @@ Scroll reveal is CSS scroll-driven (`animation-timeline: view()`), no JS.
 Mobile nav, language-menu close, copy-to-clipboard, donation amount picker (updates betterplace link,
 transfer reference and the home page's "Per Überweisung" link, which carries `?amount=<n>` to the donate
 page where the matching amount is preselected on load), sticky mobile donate bar (links to `#online` on the
-donate page itself), contact and newsletter forms (open the visitor's
-mail client via `mailto:`; optional `CONFIG.CONTACT_ENDPOINT` for Formspree), cookie consent with
+donate page itself), contact form (opens the visitor's mail client via `mailto:`; optional
+`CONFIG.CONTACT_ENDPOINT` for Formspree), cookie consent with
 Google Consent Mode v2. Google tags load **only** after consent and only when
 `CONFIG.GA_MEASUREMENT_ID` / `CONFIG.GOOGLE_ADS_ID` are set; both are empty until the Google for
 Nonprofits account exists. Donate clicks fire a `donate_click` event.
