@@ -252,8 +252,6 @@ address { font-style: normal; }
 /* ---------- Donate: PayPal (primary) + betterplace (secondary) ---------- */
 .btn--paypal { gap: 0.65rem; }
 .btn--paypal svg { width: 1.3em; height: 1.3em; }
-.donate-hint { display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: var(--space-s); font-size: var(--step--1); color: var(--muted); text-align: center; }
-.donate-hint strong { color: var(--ink); font-family: var(--font-display); font-size: 1.05em; }
 .donate-or { display: flex; align-items: center; gap: 0.75rem; margin: var(--space-l) 0 var(--space-m); color: var(--muted); font-family: var(--font-display); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
 .donate-or::before, .donate-or::after { content: ""; flex: 1; height: 1.5px; background: var(--line); }
 .donate-alt { display: flex; gap: 0.8rem; align-items: flex-start; padding: 0.9rem 1rem; border: 1.5px dashed var(--line-strong); border-radius: var(--radius-s); background: var(--bg-sunken); text-decoration: none; color: inherit; transition: background 0.15s, border-style 0.15s; }
