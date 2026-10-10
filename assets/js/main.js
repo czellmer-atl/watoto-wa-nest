@@ -93,7 +93,7 @@
         b.setAttribute("aria-pressed", "true");
         var value = b.getAttribute("data-value");
         var label = b.getAttribute("data-label");
-        outs.forEach(function (o) { o.textContent = LANG === "de" ? value + " €" : "€" + value; });
+        outs.forEach(function (o) { o.textContent = LANG === "de" ? value + "\u00a0€" : "€" + value; });
         if (purpose) purpose.textContent = T.purpose + label;
         bpLinks.forEach(function (l) { l.href = bpBase + "?donation_amount=" + value; });
       });

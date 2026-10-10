@@ -263,12 +263,9 @@ address { font-style: normal; }
 .donate-alt strong svg { width: 0.85em; height: 0.85em; }
 .donate-alt p { margin: 0.15rem 0 0; font-size: var(--step--1); color: var(--ink-2); }
 .bp__intro { font-size: var(--step--1); color: var(--ink-2); margin: 0; }
-.btn--betterplace { --_bg: var(--bg-elev); --_ink: var(--ink); --betterplace: #8cc63f; }
-.btn--betterplace svg { color: var(--betterplace); width: 1.3em; height: 1.3em; }
-.btn--betterplace:hover { background: var(--betterplace); color: #111; }
-.btn--betterplace:hover svg { color: #111; }
-.pay-methods { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: var(--space-m); padding: 0; list-style: none; }
-.pay-methods li { font-size: 0.78rem; font-weight: 600; color: var(--ink-2); padding: 0.25rem 0.6rem; border: 1.5px solid var(--line); border-radius: var(--radius-pill); background: var(--bg-elev); }
+.btn--betterplace { --_bg: #8cc63f; --_ink: #111; }
+.btn--betterplace svg { width: 1.3em; height: 1.3em; }
+.btn--betterplace:hover { background: #76ad2f; color: #111; }
 .footer-alt { font-size: 0.8rem !important; margin-top: 0.5rem !important; color: var(--footer-muted); }
 
 .amounts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr)); gap: var(--space-s); }
