@@ -172,7 +172,7 @@ address { font-style: normal; }
 .btn-row { display: flex; flex-wrap: wrap; gap: var(--space-m) var(--space-m); }
 .btn-row--center { justify-content: center; }
 .btn-row--pair { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; gap: var(--space-s); }
-.btn-row--pair .btn { text-align: center; }
+.btn-row--pair .btn { text-align: center; min-height: 3.5rem; padding-inline: 1rem; }
 @media (max-width: 30rem) { .btn-row--pair { grid-template-columns: 1fr; } }
 
 /* ---------- Header ---------- */
