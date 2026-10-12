@@ -15,7 +15,7 @@
     BETTERPLACE_URL: { de: "https://www.betterplace.org/de/donate/platform/projects/144065", en: "https://www.betterplace.org/en/donate/platform/projects/144065", sw: "https://www.betterplace.org/en/donate/platform/projects/144065" },
     /* Google-Dienste: IDs eintragen, sobald das Google-for-Nonprofits-Konto steht.
        Solange beide leer sind, erscheint kein Cookie-Banner und es wird nichts von Google geladen. */
-    GA_MEASUREMENT_ID: "",   /* z. B. "G-XXXXXXXXXX" (Google Analytics 4) */
+    GA_MEASUREMENT_ID: "G-GZ86DXQ8S5",   /* Google Analytics 4 (seit 2026-10-12) */
     GOOGLE_ADS_ID: ""        /* z. B. "AW-XXXXXXXXX" (Google Ads / Ad Grants Conversion-Tracking) */
   };
 
