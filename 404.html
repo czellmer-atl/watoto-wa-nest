@@ -41,17 +41,38 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "NGO",
-    "name": "Watoto wa Nest e.V.",
-    "alternateName": "Förderverein des The Nest Children's Home",
-    "url": "https://watotowanest.org/",
-    "logo": "https://watotowanest.org/assets/img/logo-bird.svg",
-    "email": "watotowanest@gmail.com",
-    "telephone": "+49 176 93178582",
-    "foundingDate": "2019",
-    "nonprofitStatus": "NonprofitType",
-    "address": { "@type": "PostalAddress", "streetAddress": "Trostberger Str. 35", "postalCode": "83342", "addressLocality": "Tacherting", "addressCountry": "DE" },
-    "sameAs": ["https://www.instagram.com/watotowanest_/", "https://www.betterplace.org/de/projects/144065-the-nest-children-s-home-limuru"]
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://watotowanest.org/#website",
+        "name": "Watoto wa Nest",
+        "alternateName": ["Watoto wa Nest e.V.", "watotowanest.org"],
+        "url": "https://watotowanest.org/",
+        "inLanguage": ["de", "en", "sw"],
+        "publisher": { "@id": "https://watotowanest.org/#org" }
+      },
+      {
+        "@type": "NGO",
+        "@id": "https://watotowanest.org/#org",
+        "name": "Watoto wa Nest e.V.",
+        "alternateName": ["Watoto wa Nest", "Förderverein des The Nest Children's Home"],
+        "description": "Deutscher Förderverein des Kinderheims The Nest Children's Home in Limuru, Kenia.",
+        "url": "https://watotowanest.org/",
+        "logo": "https://watotowanest.org/assets/img/apple-touch-icon.png",
+        "image": "https://watotowanest.org/assets/img/group-gate-1600.jpg",
+        "email": "watotowanest@gmail.com",
+        "telephone": "+49 176 93178582",
+        "foundingDate": "2019",
+        "nonprofitStatus": "NonprofitType",
+        "address": { "@type": "PostalAddress", "streetAddress": "Trostberger Str. 35", "postalCode": "83342", "addressLocality": "Tacherting", "addressRegion": "Bayern", "addressCountry": "DE" },
+        "areaServed": ["DE", "KE"],
+        "sameAs": [
+          "https://www.instagram.com/watotowanest_/",
+          "https://www.betterplace.org/de/organisations/46658-watoto-wa-nest-e-v",
+          "https://www.betterplace.org/de/projects/144065-the-nest-children-s-home-limuru"
+        ]
+      }
+    ]
   }
   </script>
 </head>
