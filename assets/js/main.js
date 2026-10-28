@@ -192,7 +192,9 @@
     b.addEventListener("click", function (e) { e.preventDefault(); showBanner(); });
   });
   /* Spenden-Klicks melden (ohne Einwilligung sendet Google nur cookielose Signale) */
-  document.querySelectorAll('a[href*="paypal.com/donate"], a[href*="betterplace.org"]').forEach(function (a) {
+  /* Nur echte Spenden-Links zählen: PayPal-Spendenseite und betterplace-Spendenformular
+     (nicht Newsletter-, Projekt- oder Datenschutz-Links zu betterplace) */
+  document.querySelectorAll('a[href*="paypal.com/donate"], a[href*="betterplace.org/de/donate/"], a[href*="betterplace.org/en/donate/"]').forEach(function (a) {
     var method = a.href.indexOf("paypal.com") !== -1 ? "paypal" : "betterplace";
     a.addEventListener("click", function () {
       gtag("event", "donate_click", { method: method, link_url: a.href });
