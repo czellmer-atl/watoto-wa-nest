@@ -112,16 +112,17 @@ Mobile nav, language-menu close, copy-to-clipboard, donation amount picker (upda
 transfer reference and the home page's "Per Überweisung" link, which carries `?amount=<n>` to the donate
 page where the matching amount is preselected on load), sticky mobile donate bar (links to `#online` on the
 donate page itself), contact form (opens the visitor's mail client via `mailto:`; optional
-`CONFIG.CONTACT_ENDPOINT` for Formspree), cookie consent with
-Google Consent Mode v2. Google tags load **only** after consent and only when
-`CONFIG.GA_MEASUREMENT_ID` / `CONFIG.GOOGLE_ADS_ID` are set. GA4 property `G-GZ86DXQ8S5` (2026-10-12) and
+`CONFIG.CONTACT_ENDPOINT` for Formspree), cookie banner with
+Google Consent Mode v2. Since 2026-10-28 the Google tag sits in `tools/src/head.html` on every page (user
+request, so Google Ads detects it) and starts with consent "denied" (or "granted" if stored); main.js only
+shows the banner and sends consent updates. The IDs in head.html and `CONFIG` in main.js must match. GA4 property `G-GZ86DXQ8S5` (2026-10-12) and
 Google Ads `AW-18513221566` (2026-10-28) are set. The Ads conversion `CONFIG.GOOGLE_ADS_CONVERSION`
 fires on every PayPal/betterplace button click (no thank-you page exists, donations complete off-site). Donate clicks fire a `donate_click` event.
 
 ### Privacy policy
 
 Written for GDPR/TDDDG and already covers GitHub Pages hosting, the consent banner, Google Analytics 4,
-Google Ads/Ad Grants, Google Forms, Gmail/Google Workspace, betterplace, bank transfers, Instagram
+Google Ads/Ad Grants (incl. cookieless pings before consent), Google Forms, Gmail/Google Workspace, betterplace, bank transfers, Instagram
 and Facebook links. Keep it truthful: if a new service is added, add a section in all three languages.
 It is a careful draft, not legal advice.
 

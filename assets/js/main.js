@@ -166,20 +166,9 @@
   var googleEnabled = !!(CONFIG.GA_MEASUREMENT_ID || CONFIG.GOOGLE_ADS_ID);
   function readConsent() { try { return localStorage.getItem(CONSENT_KEY); } catch (e) { return null; } }
   function writeConsent(v) { try { localStorage.setItem(CONSENT_KEY, v); } catch (e) { /* ignore */ } }
+  /* Das Google-Tag steht im <head> (tools/src/head.html) und startet mit Consent "denied". */
   window.dataLayer = window.dataLayer || [];
   function gtag() { window.dataLayer.push(arguments); }
-  var googleLoaded = false;
-  function loadGoogle() {
-    if (googleLoaded || !googleEnabled) return;
-    googleLoaded = true;
-    var first = CONFIG.GA_MEASUREMENT_ID || CONFIG.GOOGLE_ADS_ID;
-    var s = document.createElement("script");
-    s.async = true; s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(first);
-    document.head.appendChild(s);
-    gtag("js", new Date());
-    if (CONFIG.GA_MEASUREMENT_ID) gtag("config", CONFIG.GA_MEASUREMENT_ID, { anonymize_ip: true });
-    if (CONFIG.GOOGLE_ADS_ID) gtag("config", CONFIG.GOOGLE_ADS_ID);
-  }
   function applyConsent(granted) {
     gtag("consent", "update", {
       analytics_storage: granted ? "granted" : "denied",
@@ -187,16 +176,13 @@
       ad_user_data: granted ? "granted" : "denied",
       ad_personalization: granted ? "granted" : "denied"
     });
-    if (granted) loadGoogle();
   }
   var banner = document.querySelector(".consent");
   function showBanner() { if (banner) { banner.hidden = false; var b = banner.querySelector("[data-consent-accept]"); if (b) b.focus(); } }
   function hideBanner() { if (banner) banner.hidden = true; }
   if (googleEnabled) {
-    gtag("consent", "default", { analytics_storage: "denied", ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", wait_for_update: 500 });
     var stored = readConsent();
-    if (stored === "granted") applyConsent(true);
-    else if (stored !== "denied") showBanner();
+    if (stored !== "granted" && stored !== "denied") showBanner();
   }
   document.querySelectorAll("[data-consent-accept]").forEach(function (b) { b.addEventListener("click", function () { writeConsent("granted"); applyConsent(true); hideBanner(); }); });
   document.querySelectorAll("[data-consent-decline]").forEach(function (b) { b.addEventListener("click", function () { writeConsent("denied"); applyConsent(false); hideBanner(); }); });
@@ -205,11 +191,10 @@
     b.hidden = false;
     b.addEventListener("click", function (e) { e.preventDefault(); showBanner(); });
   });
-  /* Spenden-Klicks als Ereignis melden (nur wenn Google geladen ist) */
+  /* Spenden-Klicks melden (ohne Einwilligung sendet Google nur cookielose Signale) */
   document.querySelectorAll('a[href*="paypal.com/donate"], a[href*="betterplace.org"]').forEach(function (a) {
     var method = a.href.indexOf("paypal.com") !== -1 ? "paypal" : "betterplace";
     a.addEventListener("click", function () {
-      if (!googleLoaded) return;
       gtag("event", "donate_click", { method: method, link_url: a.href });
       if (CONFIG.GOOGLE_ADS_CONVERSION) gtag("event", "conversion", { send_to: CONFIG.GOOGLE_ADS_CONVERSION, value: 1.0, currency: "USD" });
     });

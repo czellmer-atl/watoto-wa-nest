@@ -3,6 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google tag (gtag.js) mit Consent Mode v2: ohne Einwilligung keine Cookies (Standard "denied") -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    (function () {
+      var c = null; try { c = localStorage.getItem("wwn-consent"); } catch (e) {}
+      var v = c === "granted" ? "granted" : "denied";
+      gtag("consent", "default", { ad_storage: v, ad_user_data: v, ad_personalization: v, analytics_storage: v, wait_for_update: 500 });
+    })();
+    gtag("set", "ads_data_redaction", true);
+    gtag("js", new Date());
+    gtag("config", "AW-18513221566");
+    gtag("config", "G-GZ86DXQ8S5", { anonymize_ip: true });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18513221566"></script>
   <title>Impressum – Watoto wa Nest e.V.</title>
   <meta name="description" content="Impressum des Watoto wa Nest e.V., Trostberger Str. 35, 83342 Tacherting. Vertreten durch Christian Berndlmaier.">
   <link rel="canonical" href="https://watotowanest.org/impressum.html">

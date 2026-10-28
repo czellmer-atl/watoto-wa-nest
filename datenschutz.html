@@ -3,6 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google tag (gtag.js) mit Consent Mode v2: ohne Einwilligung keine Cookies (Standard "denied") -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    (function () {
+      var c = null; try { c = localStorage.getItem("wwn-consent"); } catch (e) {}
+      var v = c === "granted" ? "granted" : "denied";
+      gtag("consent", "default", { ad_storage: v, ad_user_data: v, ad_personalization: v, analytics_storage: v, wait_for_update: 500 });
+    })();
+    gtag("set", "ads_data_redaction", true);
+    gtag("js", new Date());
+    gtag("config", "AW-18513221566");
+    gtag("config", "G-GZ86DXQ8S5", { anonymize_ip: true });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18513221566"></script>
   <title>Datenschutzerklärung – Watoto wa Nest e.V.</title>
   <meta name="description" content="Datenschutzerklärung des Watoto wa Nest e.V. – welche Daten beim Besuch dieser Website verarbeitet werden, welche Google-Dienste wir einsetzen und welche Rechte Sie haben.">
   <link rel="canonical" href="https://watotowanest.org/datenschutz.html">
@@ -116,7 +131,7 @@
     <h2>Cookies und Einwilligung (Cookie-Banner)</h2>
     <p><strong>Art und Zweck der Verarbeitung:</strong> Beim ersten Besuch zeigen wir Ihnen ein Cookie-Banner. Dort entscheiden Sie, ob wir Analyse- und Werbedienste von Google (siehe unten) einsetzen dürfen. Ihre Entscheidung speichern wir ausschließlich lokal in Ihrem Browser (Local Storage, Schlüssel „wwn-consent“), damit das Banner nicht bei jedem Seitenaufruf erneut erscheint. Diese Speicherung ist technisch erforderlich und enthält keine personenbezogenen Daten.</p>
     <p><strong>Rechtsgrundlage:</strong> Die Speicherung Ihrer Entscheidung erfolgt nach § 25 Abs. 2 Nr. 2 TDDDG. Das Setzen von Cookies und das Auslesen von Informationen auf Ihrem Endgerät durch Google-Dienste erfolgt nur mit Ihrer Einwilligung (§ 25 Abs. 1 TDDDG, Art. 6 Abs. 1 lit. a DSGVO).</p>
-    <p><strong>Widerruf:</strong> Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen oder ändern, indem Sie die <button type="button" class="link-arrow" data-consent-open style="border:0;background:none;padding:0;cursor:pointer;font-size:inherit">Cookie-Einstellungen</button> öffnen (Link auch im Seitenfuß). Solange Sie nicht eingewilligt haben, werden keine Google-Dienste geladen und keine Cookies gesetzt.</p>
+    <p><strong>Widerruf:</strong> Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen oder ändern, indem Sie die <button type="button" class="link-arrow" data-consent-open style="border:0;background:none;padding:0;cursor:pointer;font-size:inherit">Cookie-Einstellungen</button> öffnen (Link auch im Seitenfuß). Das Google-Tag (gtag.js) wird beim Seitenaufruf geladen, startet aber im Einwilligungsmodus von Google („Consent Mode“) mit dem Status „abgelehnt“. Solange Sie nicht eingewilligt haben, setzt Google keine Cookies und liest keine Kennungen auf Ihrem Endgerät aus; es werden lediglich cookielose Signale ohne Kennung (z. B. Seitenaufruf, Zeitpunkt, Browsertyp, gekürzte IP-Adresse) an Google übermittelt, die Google zur statistischen Modellierung von Besuchen und Conversions verwendet. Rechtsgrundlage dafür ist unser berechtigtes Interesse an einer Reichweitenmessung unserer Spendenaufrufe (Art. 6 Abs. 1 lit. f DSGVO); Sie können dem jederzeit widersprechen, z. B. durch einen Werbe- oder Skriptblocker in Ihrem Browser.</p>
 
     <h2>Google Analytics 4</h2>
     <p><strong>Art und Zweck der Verarbeitung:</strong> Mit Ihrer Einwilligung nutzen wir Google Analytics 4, einen Webanalysedienst der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland („Google“). Google Analytics verwendet Cookies und ähnliche Technologien, die eine Analyse der Benutzung der Website ermöglichen (z. B. aufgerufene Seiten, Verweildauer, ungefährer Standort, Gerätetyp, Herkunft des Besuchs, Spenden-Klicks). Die IP-Adresse wird von Google Analytics 4 nicht gespeichert, sondern nur zur groben Standortbestimmung genutzt und anschließend verworfen. Wir verwenden den Google Consent Mode: Ohne Ihre Einwilligung werden keine Cookies gesetzt und keine personenbezogenen Daten an Google übertragen.</p>
