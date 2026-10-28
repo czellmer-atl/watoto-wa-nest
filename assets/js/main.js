@@ -19,7 +19,7 @@
     GOOGLE_ADS_ID: "AW-18513221566",   /* Google Ads / Ad Grants (seit 2026-10-28) */
     /* Conversion-Aktion in Google Ads; wird beim Klick auf einen Spenden-Button (PayPal/betterplace) gesendet,
        da die Spende selbst auf PayPal bzw. betterplace stattfindet und es keine Danke-Seite bei uns gibt. */
-    GOOGLE_ADS_CONVERSION: "AW-18513221566/Xe0JCKi3naodEL6v5ftE"
+    GOOGLE_ADS_CONVERSION: "AW-18513221566/SteZCMnC76wdEL6v5ftE"   /* Conversion-Aktion „Bezahlvorgang starten“ (seit 2026-10-28; vorher „Seitenaufruf“ Xe0JCKi3naodEL6v5ftE) */
   };
 
   document.documentElement.classList.remove("no-js");
@@ -198,7 +198,7 @@
     var method = a.href.indexOf("paypal.com") !== -1 ? "paypal" : "betterplace";
     a.addEventListener("click", function () {
       gtag("event", "donate_click", { method: method, link_url: a.href });
-      if (CONFIG.GOOGLE_ADS_CONVERSION) gtag("event", "conversion", { send_to: CONFIG.GOOGLE_ADS_CONVERSION, value: 1.0, currency: "USD" });
+      if (CONFIG.GOOGLE_ADS_CONVERSION) gtag("event", "conversion", { send_to: CONFIG.GOOGLE_ADS_CONVERSION });
     });
   });
 

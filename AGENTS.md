@@ -116,7 +116,7 @@ donate page itself), contact form (opens the visitor's mail client via `mailto:`
 Google Consent Mode v2. Since 2026-10-28 the Google tag sits in `tools/src/head.html` on every page (user
 request, so Google Ads detects it) and starts with consent "denied" (or "granted" if stored); main.js only
 shows the banner and sends consent updates. The IDs in head.html and `CONFIG` in main.js must match. GA4 property `G-GZ86DXQ8S5` (2026-10-12) and
-Google Ads `AW-18513221566` (2026-10-28) are set. The Ads conversion `CONFIG.GOOGLE_ADS_CONVERSION`
+Google Ads `AW-18513221566` (2026-10-28) are set. The Ads conversion `CONFIG.GOOGLE_ADS_CONVERSION` (action "Bezahlvorgang starten", label `SteZCMnC76wdEL6v5ftE`)
 fires on clicks on links to `paypal.com/donate` or the betterplace donation form
 (`betterplace.org/<de|en>/donate/`): buttons on home and donate page plus the footer links. Links to the
 betterplace project page (newsletter) or privacy pages are deliberately not counted. No thank-you page exists,
