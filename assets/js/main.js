@@ -16,7 +16,10 @@
     /* Google-Dienste: IDs eintragen, sobald das Google-for-Nonprofits-Konto steht.
        Solange beide leer sind, erscheint kein Cookie-Banner und es wird nichts von Google geladen. */
     GA_MEASUREMENT_ID: "G-GZ86DXQ8S5",   /* Google Analytics 4 (seit 2026-10-12) */
-    GOOGLE_ADS_ID: ""        /* z. B. "AW-XXXXXXXXX" (Google Ads / Ad Grants Conversion-Tracking) */
+    GOOGLE_ADS_ID: "AW-18513221566",   /* Google Ads / Ad Grants (seit 2026-10-28) */
+    /* Conversion-Aktion in Google Ads; wird beim Klick auf einen Spenden-Button (PayPal/betterplace) gesendet,
+       da die Spende selbst auf PayPal bzw. betterplace stattfindet und es keine Danke-Seite bei uns gibt. */
+    GOOGLE_ADS_CONVERSION: "AW-18513221566/Xe0JCKi3naodEL6v5ftE"
   };
 
   document.documentElement.classList.remove("no-js");
@@ -205,7 +208,11 @@
   /* Spenden-Klicks als Ereignis melden (nur wenn Google geladen ist) */
   document.querySelectorAll('a[href*="paypal.com/donate"], a[href*="betterplace.org"]').forEach(function (a) {
     var method = a.href.indexOf("paypal.com") !== -1 ? "paypal" : "betterplace";
-    a.addEventListener("click", function () { if (googleLoaded) gtag("event", "donate_click", { method: method, link_url: a.href }); });
+    a.addEventListener("click", function () {
+      if (!googleLoaded) return;
+      gtag("event", "donate_click", { method: method, link_url: a.href });
+      if (CONFIG.GOOGLE_ADS_CONVERSION) gtag("event", "conversion", { send_to: CONFIG.GOOGLE_ADS_CONVERSION, value: 1.0, currency: "USD" });
+    });
   });
 
   /* ---------- Language menu: close on outside click / Escape ---------- */

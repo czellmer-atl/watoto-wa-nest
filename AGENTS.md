@@ -114,8 +114,9 @@ page where the matching amount is preselected on load), sticky mobile donate bar
 donate page itself), contact form (opens the visitor's mail client via `mailto:`; optional
 `CONFIG.CONTACT_ENDPOINT` for Formspree), cookie consent with
 Google Consent Mode v2. Google tags load **only** after consent and only when
-`CONFIG.GA_MEASUREMENT_ID` / `CONFIG.GOOGLE_ADS_ID` are set. GA4 property `G-GZ86DXQ8S5` has been
-entered on 2026-10-12 (so the cookie banner is live); the Ads ID is still empty. Donate clicks fire a `donate_click` event.
+`CONFIG.GA_MEASUREMENT_ID` / `CONFIG.GOOGLE_ADS_ID` are set. GA4 property `G-GZ86DXQ8S5` (2026-10-12) and
+Google Ads `AW-18513221566` (2026-10-28) are set. The Ads conversion `CONFIG.GOOGLE_ADS_CONVERSION`
+fires on every PayPal/betterplace button click (no thank-you page exists, donations complete off-site). Donate clicks fire a `donate_click` event.
 
 ### Privacy policy
 
@@ -139,7 +140,7 @@ Commit messages are in German, short subject line, with the Claude co-author tra
 ## Open items / roadmap
 
 - Google for Nonprofits application via Stifter-helfen.de (in progress by the user). GA4 ID is entered
-  (2026-10-12). Still to do: enter the Ads ID, accept Google's data processing terms in the GA admin,
+  (2026-10-12). Ads ID and conversion are set (2026-10-28). Still to do: accept Google's data processing terms in the GA admin,
   check that GA data retention is set to 14 months (the privacy policy says so), set up Ad Grants conversion
   (`donate_click`), activate Google Workspace and create `info@watotowanest.org`
   (then replace `watotowanest@gmail.com` site-wide: footer, contact, imprint, privacy, JS config),
