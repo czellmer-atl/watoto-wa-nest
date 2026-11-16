@@ -14,8 +14,11 @@
     })();
     gtag("set", "ads_data_redaction", true);
     gtag("js", new Date());
-    gtag("config", "AW-18513221566");
-    gtag("config", "G-GZ86DXQ8S5", { anonymize_ip: true });
+    /* Danke-Seite: PayPal hängt Betrag und Transaktions-ID an die URL – nur den Pfad an Google melden */
+    var thanks = /\/(danke|thank-you|asante)\.html$/.test(location.pathname);
+    var loc = thanks ? location.origin + location.pathname : undefined;
+    gtag("config", "AW-18513221566", thanks ? { page_location: loc } : {});
+    gtag("config", "G-GZ86DXQ8S5", thanks ? { anonymize_ip: true, page_location: loc } : { anonymize_ip: true });
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18513221566"></script>
   <title>Sera ya faragha – Watoto wa Nest e.V.</title>
@@ -164,7 +167,7 @@
     <p><strong>Kuondoa idhini:</strong> kupitia mipangilio ya vidakuzi (tazama hapo juu) au kupitia <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">programu-jalizi ya kivinjari ya kuzima Google Analytics</a>. Taarifa zaidi: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">sera ya faragha ya Google</a> na <a href="https://support.google.com/analytics/answer/6004245" target="_blank" rel="noopener">taarifa za faragha kuhusu Google Analytics</a>.</p>
 
     <h2>Google Ads na Google Ad Grants (ufuatiliaji wa mabadiliko)</h2>
-    <p><strong>Aina na madhumuni ya uchakataji:</strong> Kama shirika lisilo la faida tunatumia mpango wa Google Ad Grants ili kuvutia umakini kwa kazi yetu kupitia Google Ads. Kwa idhini yako tunatumia ufuatiliaji wa mabadiliko wa Google Ads. Ukifika kwenye tovuti yetu kupitia tangazo la Google, kidakuzi huwekwa kinachowezesha Google na sisi kutambua kama umetembelea kurasa fulani au kufanya vitendo (k.m. kubofya „Changia sasa“ au kutuma fomu ya mawasiliano). Tunapokea tathmini za takwimu zisizo na majina pekee na hakuna taarifa inayotuwezesha kukutambua binafsi.</p>
+    <p><strong>Aina na madhumuni ya uchakataji:</strong> Kama shirika lisilo la faida tunatumia mpango wa Google Ad Grants ili kuvutia umakini kwa kazi yetu kupitia Google Ads. Kwa idhini yako tunatumia ufuatiliaji wa mabadiliko wa Google Ads. Ukifika kwenye tovuti yetu kupitia tangazo la Google, kidakuzi huwekwa kinachowezesha Google na sisi kutambua kama umetembelea kurasa fulani au kufanya vitendo (k.m. kubofya „Changia sasa“, kufika kwenye ukurasa wetu wa shukrani baada ya mchango wa PayPal pamoja na kiasi cha mchango, kubofya anwani yetu ya barua pepe au kutuma fomu ya mawasiliano). Tunapokea tathmini za takwimu zisizo na majina pekee na hakuna taarifa inayotuwezesha kukutambua binafsi.</p>
     <p><strong>Msingi wa kisheria:</strong> Kifungu cha 6 (1) (a) GDPR (idhini), § 25 (1) TDDDG.</p>
     <p><strong>Wapokeaji na uhamishaji kwa nchi ya tatu:</strong> Google Ireland Limited; uhamishaji kwa Google LLC nchini Marekani unawezekana (Mfumo wa Faragha ya Data wa EU-Marekani, vifungu vya kawaida vya mkataba vya EU).</p>
     <p><strong>Uhifadhi:</strong> Vidakuzi vya mabadiliko vinaisha baada ya siku 90.</p>
@@ -208,7 +211,7 @@
 
     <h2>Maswali kuhusu ulinzi wa data</h2>
     <p>Ukiwa na maswali kuhusu ulinzi wa data, tafadhali tutumie barua pepe kwa <a href="mailto:watotowanest@gmail.com">watotowanest@gmail.com</a> au uandike kwa anwani iliyo hapo juu.</p>
-    <p class="small">Imesasishwa: Oktoba 2026</p>
+    <p class="small">Imesasishwa: Novemba 2026</p>
   </div>
 </section>
 </main>

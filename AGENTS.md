@@ -67,7 +67,7 @@ There is **no Actions workflow** on purpose: the `gh` token on the maintainer's 
 
 ### Pages are generated – edit sources, not output
 
-All 22 HTML files (root = German, `en/`, `sw/`) are produced by `tools/build.py` from
+All 25 HTML files (root = German, `en/`, `sw/`) are produced by `tools/build.py` from
 `tools/src/`. See `tools/README.md`. Workflow for any content change:
 
 1. Edit `tools/src/i18n/<lang>/pages/<page>.html` (and the other two languages!).
@@ -85,6 +85,7 @@ Page IDs and slugs:
 | kontakt | kontakt.html | contact.html | wasiliana.html |
 | impressum | impressum.html | imprint.html | impressum.html |
 | datenschutz | datenschutz.html | privacy.html | faragha.html |
+| danke | danke.html | thank-you.html | asante.html |
 
 In sources always link with the German file names and un-prefixed asset paths; the generator
 localises links, prefixes `../` for subfolders, rewrites `index.html` links to folder URLs (`./`, `../`, `en/`; Google had indexed `/en/index.html` instead of `/en/`), sets `lang`, canonical, hreflang and the sitemap.
@@ -119,8 +120,16 @@ shows the banner and sends consent updates. The IDs in head.html and `CONFIG` in
 Google Ads `AW-18513221566` (2026-10-28) are set. The Ads conversion `CONFIG.GOOGLE_ADS_CONVERSION` (action "Bezahlvorgang starten", label `SteZCMnC76wdEL6v5ftE`)
 fires on clicks on links to `paypal.com/donate` or the betterplace donation form
 (`betterplace.org/<de|en>/donate/`): buttons on home and donate page plus the footer links. Links to the
-betterplace project page (newsletter) or privacy pages are deliberately not counted. No thank-you page exists,
-donations complete off-site. Donate clicks fire a `donate_click` event.
+betterplace project page (newsletter) or privacy pages are deliberately not counted. Donate clicks fire a `donate_click` event.
+Since 2026-11-16 there is a thank-you page (`danke.html`, `en/thank-you.html`, `sw/asante.html`; `robots: noindex` in
+the page meta, so it stays out of the sitemap). It is set as the return URL of the PayPal donate button
+(`https://watotowanest.org/danke.html`) and fires `donation_complete` plus the Ads conversion
+`CONFIG.GOOGLE_ADS_DONATION_CONVERSION` ("Spende abgeschlossen"), with PayPal's `amt`/`cc` as value if present, once per
+session; the query string is stripped from the URL and from what Google receives (head.html). betterplace has no
+return URL, so betterplace donations are still only counted by click. `CONFIG.GOOGLE_ADS_CONTACT_CONVERSION`
+("Kontaktanfrage") fires once per page on contact form submit or a click on a `mailto:` link (`contact` event).
+Ad images for Google Ads (1.91:1 and 1:1 crops, logo) live in `assets/img/ads/` and are loaded by URL from the Ads
+account – do not rename or delete them.
 
 ### Privacy policy
 

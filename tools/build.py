@@ -2,17 +2,18 @@ import re, pathlib
 B = pathlib.Path(__file__).parent / "src"
 OUT = pathlib.Path(__file__).parent.parent
 SITE_URL = "https://watotowanest.org/"
-PAGES = ["index","spenden","ueber-uns","transparenz","kontakt","impressum","datenschutz"]
+PAGES = ["index","spenden","ueber-uns","transparenz","kontakt","impressum","datenschutz","danke"]
 LANGS = {
   "de": {"dir":"", "og":"de_DE", "skip":"Zum Inhalt springen", "label":"Deutsch",
-         "slugs":{"index":"index.html","spenden":"spenden.html","ueber-uns":"ueber-uns.html","transparenz":"transparenz.html","kontakt":"kontakt.html","impressum":"impressum.html","datenschutz":"datenschutz.html"}},
+         "slugs":{"index":"index.html","spenden":"spenden.html","ueber-uns":"ueber-uns.html","transparenz":"transparenz.html","kontakt":"kontakt.html","impressum":"impressum.html","datenschutz":"datenschutz.html","danke":"danke.html"}},
   "en": {"dir":"en/", "og":"en_GB", "skip":"Skip to content", "label":"English",
-         "slugs":{"index":"index.html","spenden":"donate.html","ueber-uns":"about.html","transparenz":"transparency.html","kontakt":"contact.html","impressum":"imprint.html","datenschutz":"privacy.html"}},
+         "slugs":{"index":"index.html","spenden":"donate.html","ueber-uns":"about.html","transparenz":"transparency.html","kontakt":"contact.html","impressum":"imprint.html","datenschutz":"privacy.html","danke":"thank-you.html"}},
   "sw": {"dir":"sw/", "og":"sw_KE", "skip":"Ruka hadi maudhui", "label":"Kiswahili",
-         "slugs":{"index":"index.html","spenden":"changia.html","ueber-uns":"kuhusu-sisi.html","transparenz":"uwazi.html","kontakt":"wasiliana.html","impressum":"impressum.html","datenschutz":"faragha.html"}},
+         "slugs":{"index":"index.html","spenden":"changia.html","ueber-uns":"kuhusu-sisi.html","transparenz":"uwazi.html","kontakt":"wasiliana.html","impressum":"impressum.html","datenschutz":"faragha.html","danke":"asante.html"}},
 }
 head = (B/"head.html").read_text()
-DE_SLUG_RE = re.compile(r'href="(index|spenden|ueber-uns|transparenz|kontakt|impressum|datenschutz)\.html(#[^"]*)?"')
+ROBOTS = '  <meta name="robots" content="noindex, follow">\n'
+DE_SLUG_RE = re.compile(r'href="(index|spenden|ueber-uns|transparenz|kontakt|impressum|datenschutz|danke)\.html(#[^"]*)?"')
 
 def url_for(lang, page):
     L = LANGS[lang]; slug = L["slugs"][page]
@@ -68,7 +69,7 @@ for lang, L in LANGS.items():
         alts = "\n".join('  <link rel="alternate" hreflang="%s" href="%s">' % (c, url_for(c, page)) for c in LANGS)
         alts += '\n  <link rel="alternate" hreflang="x-default" href="%s">' % url_for("de", page)
         h = (head.replace("{{lang}}", lang).replace("{{title}}", meta["title"]).replace("{{description}}", meta["description"])
-                 .replace("{{canonical}}", canonical).replace("{{site_url}}", SITE_URL).replace("{{alternates}}", alts)
+                 .replace("{{robots}}", ROBOTS if meta.get("robots") else "").replace("{{canonical}}", canonical).replace("{{site_url}}", SITE_URL).replace("{{alternates}}", alts)
                  .replace("{{og_locale}}", L["og"]).replace("{{skip}}", L["skip"]).replace("{{root}}", root))
         hd = header.replace("{{langswitch}}", switch_markup(lang, page)).replace("{{langswitch_mobile}}", switch_markup(lang, page, True))
         hd = re.sub(r'(<a href="[^"]+" data-nav="%s")' % re.escape(page), r'\1 aria-current="page"', hd)
@@ -77,7 +78,8 @@ for lang, L in LANGS.items():
         out = OUT / L["dir"] / L["slugs"][page]
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(html)
-        sitemap.append((canonical, [(c, url_for(c, page)) for c in LANGS]))
+        if not meta.get("robots"):  # noindex pages (thank-you page) stay out of the sitemap
+            sitemap.append((canonical, [(c, url_for(c, page)) for c in LANGS]))
     print("built", lang, len(PAGES), "pages")
 
 # 404 (single trilingual page at root, served by GitHub Pages for any missing path)
@@ -86,7 +88,7 @@ m = re.match(r"<!--meta\n(.*?)-->\n", src, re.S)
 meta = {k.strip(): v.strip() for k, v in (l.split(":",1) for l in m.group(1).strip().splitlines())}
 body = src[m.end():]
 h = (head.replace("{{lang}}", "de").replace("{{title}}", meta["title"]).replace("{{description}}", meta["description"])
-         .replace("{{canonical}}", SITE_URL + "404.html").replace("{{site_url}}", SITE_URL).replace("{{alternates}}", "")
+         .replace("{{robots}}", "").replace("{{canonical}}", SITE_URL + "404.html").replace("{{site_url}}", SITE_URL).replace("{{alternates}}", "")
          .replace("{{og_locale}}", "de_DE").replace("{{skip}}", "Zum Inhalt springen").replace("{{root}}", "/"))
 header = (B/"i18n/de/header.html").read_text(); footer = (B/"i18n/de/footer.html").read_text()
 hd = header.replace("{{langswitch}}", switch_markup("de", "index")).replace("{{langswitch_mobile}}", switch_markup("de", "index", True))

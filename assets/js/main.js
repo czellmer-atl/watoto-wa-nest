@@ -19,7 +19,11 @@
     GOOGLE_ADS_ID: "AW-18513221566",   /* Google Ads / Ad Grants (seit 2026-10-28) */
     /* Conversion-Aktion in Google Ads; wird beim Klick auf einen Spenden-Button (PayPal/betterplace) gesendet,
        da die Spende selbst auf PayPal bzw. betterplace stattfindet und es keine Danke-Seite bei uns gibt. */
-    GOOGLE_ADS_CONVERSION: "AW-18513221566/SteZCMnC76wdEL6v5ftE"   /* Conversion-Aktion „Bezahlvorgang starten“ (seit 2026-10-28; vorher „Seitenaufruf“ Xe0JCKi3naodEL6v5ftE) */
+    GOOGLE_ADS_CONVERSION: "AW-18513221566/SteZCMnC76wdEL6v5ftE",   /* Conversion-Aktion „Bezahlvorgang starten“ (seit 2026-10-28; vorher „Seitenaufruf“ Xe0JCKi3naodEL6v5ftE) */
+    /* „Spende abgeschlossen“: Aufruf der Danke-Seite (danke.html), auf die PayPal nach der Spende zurückleitet (seit 2026-11-16) */
+    GOOGLE_ADS_DONATION_CONVERSION: "AW-18513221566/IwuCCMOswrkdEL6v5ftE",
+    /* „Kontaktanfrage“: Absenden des Kontaktformulars oder Klick auf eine E-Mail-Adresse (seit 2026-11-16) */
+    GOOGLE_ADS_CONTACT_CONVERSION: "AW-18513221566/zuXnCMaswrkdEL6v5ftE"
   };
 
   document.documentElement.classList.remove("no-js");
@@ -149,12 +153,13 @@
         setStatus(T.sending);
         fetch(CONFIG.CONTACT_ENDPOINT, { method: "POST", body: data, headers: { Accept: "application/json" } })
           .then(function (r) {
-            if (r.ok) { form.reset(); setStatus(T.sent, "ok"); }
+            if (r.ok) { form.reset(); setStatus(T.sent, "ok"); if (window.wwnTrackContact) window.wwnTrackContact("form"); }
             else { throw new Error("bad status"); }
           })
           .catch(function () { setStatus(T.failed + CONFIG.CONTACT_EMAIL + ".", "error"); });
       } else {
         var body = T.nameLabel + name + "\n" + T.emailLabel + email + "\n\n" + message;
+        if (window.wwnTrackContact) window.wwnTrackContact("form");
         window.location.href = "mailto:" + CONFIG.CONTACT_EMAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
         setStatus(T.mailto, "ok");
       }
@@ -200,6 +205,40 @@
       gtag("event", "donate_click", { method: method, link_url: a.href });
       if (CONFIG.GOOGLE_ADS_CONVERSION) gtag("event", "conversion", { send_to: CONFIG.GOOGLE_ADS_CONVERSION });
     });
+  });
+
+  /* Abgeschlossene Spende: PayPal leitet nach der Spende auf die Danke-Seite zurück und hängt bei aktivierter
+     automatischer Rückleitung Betrag (amt) und Währung (cc) an. Pro Sitzung nur einmal zählen (Neuladen). */
+  if (document.querySelector("[data-donation-complete]")) {
+    var q = new URLSearchParams(window.location.search);
+    var amt = parseFloat((q.get("amt") || q.get("mc_gross") || "").replace(",", "."));
+    var cur = (q.get("cc") || q.get("mc_currency") || "EUR").toUpperCase();
+    var counted = false;
+    try { counted = sessionStorage.getItem("wwn-donation-counted") === "1"; sessionStorage.setItem("wwn-donation-counted", "1"); } catch (e) { /* ignore */ }
+    if (!counted) {
+      var params = function (extra) {
+        var p = amt > 0 ? { value: amt, currency: cur } : {};
+        for (var k in extra) p[k] = extra[k];
+        return p;
+      };
+      gtag("event", "donation_complete", params({}));
+      if (CONFIG.GOOGLE_ADS_DONATION_CONVERSION) gtag("event", "conversion", params({ send_to: CONFIG.GOOGLE_ADS_DONATION_CONVERSION }));
+    }
+    /* Betrag und Transaktions-ID nicht in der Adresszeile stehen lassen */
+    if (window.location.search && window.history.replaceState) window.history.replaceState(null, "", window.location.pathname + window.location.hash);
+  }
+
+  /* Kontaktanfrage melden: Absenden des Kontaktformulars oder Klick auf eine E-Mail-Adresse (einmal pro Seitenaufruf) */
+  var contactSent = false;
+  function trackContact(method) {
+    if (contactSent) return;
+    contactSent = true;
+    gtag("event", "contact", { method: method });
+    if (CONFIG.GOOGLE_ADS_CONTACT_CONVERSION) gtag("event", "conversion", { send_to: CONFIG.GOOGLE_ADS_CONTACT_CONVERSION });
+  }
+  window.wwnTrackContact = trackContact;
+  document.querySelectorAll('a[href^="mailto:"]').forEach(function (a) {
+    a.addEventListener("click", function () { trackContact("email_link"); });
   });
 
   /* ---------- Language menu: close on outside click / Escape ---------- */

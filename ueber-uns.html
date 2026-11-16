@@ -14,8 +14,11 @@
     })();
     gtag("set", "ads_data_redaction", true);
     gtag("js", new Date());
-    gtag("config", "AW-18513221566");
-    gtag("config", "G-GZ86DXQ8S5", { anonymize_ip: true });
+    /* Danke-Seite: PayPal hängt Betrag und Transaktions-ID an die URL – nur den Pfad an Google melden */
+    var thanks = /\/(danke|thank-you|asante)\.html$/.test(location.pathname);
+    var loc = thanks ? location.origin + location.pathname : undefined;
+    gtag("config", "AW-18513221566", thanks ? { page_location: loc } : {});
+    gtag("config", "G-GZ86DXQ8S5", thanks ? { anonymize_ip: true, page_location: loc } : { anonymize_ip: true });
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18513221566"></script>
   <title>Über uns & The Nest – Watoto wa Nest e.V.</title>
