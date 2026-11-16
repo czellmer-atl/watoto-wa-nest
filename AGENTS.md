@@ -139,6 +139,11 @@ Then check: no mismatched tags, every internal link/asset resolves (including `s
 `python3 -m http.server 8080` (config also in `.claude/launch.json`). After pushing, the live site
 should return 200 for all pages; a crawl of external links was last done 2026-10-09 (all OK).
 
+**Search engines:** Google Search Console is verified via a DNS TXT record at Cloudflare. Bing (and with it
+DuckDuckGo/Ecosia) is notified via IndexNow: key file `2dec1b29769b11cb4a295a98135c4cae.txt` in the root (do not delete).
+After larger content changes, POST the sitemap URLs to `https://api.indexnow.org/indexnow`
+(`host`, `key`, `keyLocation`, `urlList`). First submitted 2026-11-16.
+
 Commit messages are in German, short subject line, with the Claude co-author trailer.
 
 ## Open items / roadmap
