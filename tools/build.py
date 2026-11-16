@@ -25,6 +25,11 @@ def localize_links(html, lang, root):
     html = re.sub(r'srcset="([^"]*)"', lambda m: 'srcset="%s"' % m.group(1).replace("assets/", root + "assets/"), html)
     return html
 
+# Link folder URLs instead of index.html, so Google indexes /, /en/, /sw/ (the canonicals) and not /en/index.html
+INDEX_RE = re.compile(r'href="((?:\.\./)?(?:en/|sw/)?)index\.html(#[^"]*)?"')
+def clean_index_links(html, base=""):
+    return INDEX_RE.sub(lambda m: 'href="%s%s"' % ((base + m.group(1)) or "./", m.group(2) or ""), html)
+
 GLOBE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>'
 CHEVRON = '<svg class="lang-menu__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>'
 CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>'
@@ -68,7 +73,7 @@ for lang, L in LANGS.items():
         hd = header.replace("{{langswitch}}", switch_markup(lang, page)).replace("{{langswitch_mobile}}", switch_markup(lang, page, True))
         hd = re.sub(r'(<a href="[^"]+" data-nav="%s")' % re.escape(page), r'\1 aria-current="page"', hd)
         html = h + localize_links(hd + body + footer, lang, root)
-        html = re.sub(r' data-nav="[^"]*"', "", html)
+        html = clean_index_links(re.sub(r' data-nav="[^"]*"', "", html))
         out = OUT / L["dir"] / L["slugs"][page]
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(html)
@@ -86,7 +91,7 @@ h = (head.replace("{{lang}}", "de").replace("{{title}}", meta["title"]).replace(
 header = (B/"i18n/de/header.html").read_text(); footer = (B/"i18n/de/footer.html").read_text()
 hd = header.replace("{{langswitch}}", switch_markup("de", "index")).replace("{{langswitch_mobile}}", switch_markup("de", "index", True))
 html = h + localize_links(hd + body + footer, "de", "/")
-html = re.sub(r' data-nav="[^"]*"', "", html)
+html = clean_index_links(re.sub(r' data-nav="[^"]*"', "", html), "/")
 (OUT/"404.html").write_text(html); print("built 404")
 
 # sitemap with hreflang alternates
