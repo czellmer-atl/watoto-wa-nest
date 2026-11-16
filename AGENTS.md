@@ -163,6 +163,10 @@ Commit messages are in German, short subject line, with the Claude co-author tra
   (`donate_click`), activate Google Workspace and create `info@watotowanest.org`
   (then replace `watotowanest@gmail.com` site-wide: footer, contact, imprint, privacy, JS config),
   add MX/SPF/DKIM/DMARC at Cloudflare.
+- Google Ads (campaigns "DE – Kinderheim Kenia" and "EN – The Nest Kenya", built 2026-11-16 via an Ads script):
+  advertiser verification is still missing, so business name and logo cannot be attached yet; image assets were
+  rejected (account not yet eligible). Retry both later with the files in `assets/img/ads/`. In 4–6 weeks, once
+  "Spende abgeschlossen" has data, consider making "Bezahlvorgang starten" a secondary conversion.
 - Optional Formspree endpoint for the contact form (then extend the privacy policy).
 - Native review of the Kiswahili texts.
 - Yearly: update the Transparenz page (annual report, funds), check external links.
