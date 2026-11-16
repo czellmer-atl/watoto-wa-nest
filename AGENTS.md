@@ -87,7 +87,7 @@ Page IDs and slugs:
 | datenschutz | datenschutz.html | privacy.html | faragha.html |
 
 In sources always link with the German file names and un-prefixed asset paths; the generator
-localises links, prefixes `../` for subfolders, sets `lang`, canonical, hreflang and the sitemap.
+localises links, prefixes `../` for subfolders, rewrites `index.html` links to folder URLs (`./`, `../`, `en/`; Google had indexed `/en/index.html` instead of `/en/`), sets `lang`, canonical, hreflang and the sitemap.
 `404.html` is one trilingual page (GitHub Pages serves a single 404).
 
 ### Languages
